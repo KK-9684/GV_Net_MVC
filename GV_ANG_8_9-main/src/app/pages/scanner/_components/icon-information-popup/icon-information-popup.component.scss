@@ -1,0 +1,45 @@
+.example-headers-align {
+    .section-heading {
+        height: 20px; 
+        background-color:rgb(29, 36, 49) !important;
+        width: 100%;
+        
+        .section-title {
+            width: 100%; 
+            color: white; 
+            font-size: 13px; 
+            font-weight: 700;
+        }
+    }
+
+    table {
+        tr {
+            td {
+                border-bottom: 1px solid gray;
+                padding: 3px 0px;
+
+                .icon-info {
+                    height: 20px;
+                }       
+                .stats-padding {
+                    padding-left: 15px !important;
+                }
+                .stats-info {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                }
+            }
+            td:first-child {
+                text-align: center;
+            }
+            td:last-child {
+                text-align: left;
+                padding: 5px;
+            }
+        }
+    }
+}
+// :host::ng-deep .mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
+//     background: ;
+// }

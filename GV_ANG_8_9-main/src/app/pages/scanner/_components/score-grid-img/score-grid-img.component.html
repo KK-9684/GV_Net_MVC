@@ -1,0 +1,112 @@
+<div class="grid image-export row" #screen id="content">
+  <div class="col-6">
+    <div class="tab-container">
+      <table class="table table__s--padding">
+        <thead>
+          <tr>
+            <th class="pad0 ttu tl table__title--small">
+              <strong>Full time</strong>
+            </th>
+            <th>
+              <img src="assets/img/psd/shots_on.png" />
+            </th>
+            <th>
+              <img src="assets/img/psd/shots_off.png" />
+            </th>
+            <th><img src="assets/img/psd/attack.png" /></th>
+            <th>
+              <img src="assets/img/psd/d_attack.png" />
+            </th>
+            <th class="tr">
+              <img src="assets/img/psd/corner.png" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td class="tl">{{homeName}}</td>
+            <td *ngFor="let td of homeTds">{{td}}</td>
+          </tr>
+          <tr class="even">
+            <td class="tl">{{awayName}}</td>
+            <td *ngFor="let td of awayTds">{{td}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-score-grid-progressbar
+      [str]="'Shots On Target'" [valHome]="fullTime.totalHomeOnTarget" [valAway]="fullTime.totalAwayOnTarget"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Shots Off Target'" [valHome]="fullTime.totalHomeOffTarget" [valAway]="fullTime.totalAwayOffTarget"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Attacks'" [valHome]="fullTime.totalHomeAttacks" [valAway]="fullTime.totalAwayAttacks"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Dangerous Attacks'" [valHome]="fullTime.totalHomeDangerousAttacks" [valAway]="fullTime.totalAwayDangerousAttacks"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Corners'" [valHome]="fullTime.totalHomeCorners" [valAway]="fullTime.totalAwayCorners">
+      </app-score-grid-progressbar>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="tab-container">
+      <table class="table table-stats">
+        <thead>
+          <tr>
+            <th class="pad0 ttu tl table__title--small">
+              <strong>Last 20 minutes</strong>
+            </th>
+            <th>
+              <img src="assets/img/psd/shots_on.png" />
+            </th>
+            <th>
+              <img src="assets/img/psd/shots_off.png" />
+            </th>
+            <th><img src="assets/img/psd/attack.png" /></th>
+            <th>
+              <img src="assets/img/psd/d_attack.png" />
+            </th>
+            <th class="tr">
+              <img src="assets/img/psd/corner.png" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td class="tl">{{homeName}}</td>
+            <td *ngFor="let td of homeTds20">{{td}}</td>
+          </tr>
+          <tr class="even">
+            <td class="tl">{{awayName}}</td>
+            <td *ngFor="let td of awayTds20">{{td}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-score-grid-progressbar
+      [str]="'Shots On Target'" [valHome]="homeLast20.shotsOnTarget" [valAway]="awayLast20.shotsOnTarget"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Shots Off Target'" [valHome]="homeLast20.shotsOffTarget" [valAway]="awayLast20.shotsOffTarget"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Attacks'" [valHome]="homeLast20.attacks" [valAway]="awayLast20.attacks"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Dangerous Attacks'" [valHome]="homeLast20.dangerousAttacks" [valAway]="awayLast20.dangerousAttacks"></app-score-grid-progressbar>
+      <app-score-grid-progressbar
+      [str]="'Corners'" [valHome]="homeLast20.corners" [valAway]="awayLast20.corners">
+    </app-score-grid-progressbar>
+    </div>
+  </div>
+  <div class="col-12">
+    <app-momentum-graph [dataOptions]="dataOptions" *ngIf="chartType==='Bar'" [graphWidth]="'100%'"></app-momentum-graph>
+    <div class="momentum-line-chart w-50 mx-auto" *ngIf="chartType==='Line'">
+      <app-momentum-line-chart [dataOptions]="dataOptions"></app-momentum-line-chart>
+    </div>
+  </div>
+  <div class="screenshot col-12 align-self-center" id="btn_shot" [style.marginTop]="chartType==='Line'?'15px':null" data-html2canvas-ignore="true">
+    <button
+       class="downloadImage mx-auto"
+       (click)="downloadImage()"
+    >
+      <img style="width: 25px; height: auto;" src="assets/img/psd/camera.png" />
+      <span style="margin-left: 16px; color: white;">Download</span>
+    </button>
+  </div>
+</div>
+

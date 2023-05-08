@@ -1,0 +1,54 @@
+
+.custom-column-section {
+  .new-description {
+    text-align: center;
+  }
+
+  .field-select {
+    width: 200px;
+  }
+
+  .minute-select {
+    width: 200px;
+  }
+
+  .custom-column-name {
+    line-height: 31px;
+    vertical-align: middle;
+  }
+}
+
+.col-sm-2{
+  margin-top: 6px;
+}
+
+.col-sm-8{
+  margin-top: 6px;
+}
+
+.btn-createcolumn {
+  // position: absolute;
+  bottom: 0px;
+  min-width: 120px;
+  color: white;
+  font-size: 12px;
+  background: #146853;
+  cursor: pointer;
+  margin: 20px;
+}
+.btn-delcolumn {
+  // position: absolute;
+  bottom: 0px;
+  min-width: 120px;
+  color: white;
+  font-size: 12px;
+  background: #dc3545;
+  cursor: pointer;
+  margin: 20px;
+}
+.btn.disabled{
+  cursor: not-allowed;
+}
+.disabled {
+  opacity: .7 !important;
+}

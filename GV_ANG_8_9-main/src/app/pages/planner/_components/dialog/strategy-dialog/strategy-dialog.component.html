@@ -1,0 +1,73 @@
+<button
+  type="button"
+  class="close d-flex justify-content-center align-items-center text-white"
+  (click)="onClose()"
+>
+  <i class="material-icons">close</i>
+</button>
+<h1 mat-dialog-title class="mb-0 p-2 text-center text-white dialog-title">Import Preset Strategies</h1>
+<div mat-dialog-content class="m-0 p-3 dialog-body">
+  <p class="mb-5 section-title">Strategy&nbsp;:</p>
+  <select
+    class="bg-semi-success mb-5 text-success graph-type-select border-0"
+    [value]="currentIndex"
+    (change)="handleChangeStrategy($event.target.value)"
+  >
+    <option *ngFor="let strategy of strategies; index as i" [value]="i">
+      {{ strategy.name }}
+    </option>
+  </select>
+  <p class="mb-5 section-title">Description</p>
+  <p class="mb-5 text-center" *ngIf="curStg">
+    {{ curStg.description }}
+  </p>
+  <p class="mb-5 section-title">
+    Stats Filters
+  </p>
+  <div class="row mb-5">
+    <ng-container *ngIf="curStg">
+      <ng-container *ngFor="let filter of curStg.statsFiltersList; index as i">
+        <div class=" mt-1 mb-1">
+          <button
+            class="btn btn-visibility bg-semi-success text-capitalize text-success d-flex justify-content-between align-items-center"
+          >
+            <span>{{ filter.statType + filter.operator + filter.value }}</span>
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <p class="mb-5 section-title">
+    Correct Score Filters
+  </p>
+  <div class="row mb-5">
+    <ng-container *ngIf="curStg">
+      <ng-container *ngFor="let filter of curStg.correctScoreFiltersList; index as i">
+        <div class=" mt-1 mb-1">
+          <button
+            class="btn btn-visibility bg-semi-success text-capitalize text-success d-flex justify-content-between align-items-center"
+          >
+            <span>{{ filter.homeGoals + '-' + filter.awayGoals }}</span>
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mb-5">
+    <p class="section-title"> Column Visibility </p>
+    <app-column-visibility-show [selectedStrategy]="curStg" *ngIf="curStg"></app-column-visibility-show>
+  </div>
+</div>
+<div
+  mat-dialog-actions
+  class="d-flex justify-content-center align-items-center"
+>
+  <button
+    class="btn btn-success btn-sm btn-fab text-capitalize"
+    (click)="handleImportStrategy()"
+    *ngIf="curStg"
+  >
+    <i class="fal fa-file-import mr-2"></i>
+    Import
+  </button>
+</div>

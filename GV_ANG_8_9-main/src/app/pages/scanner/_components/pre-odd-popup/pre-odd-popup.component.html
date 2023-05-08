@@ -1,0 +1,25 @@
+<table 
+    class="table mat-sort table-hover responsive nowrap ng-star-inserted"
+    *ngIf="preMatchOdds"
+>
+    <thead class="prediction-thead">
+        <tr style="color:#fff;">
+            <th>Home</th>
+            <th>Draw</th>
+            <th>Away</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>         
+          <td>
+            <div>{{preMatchOdds.home}}</div>
+          </td>
+          <td>
+            <div>{{preMatchOdds.draw}}</div>
+          </td>
+          <td>
+            <div>{{preMatchOdds.away}}</div>
+          </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,198 @@
+<!-- grid title -->
+<block-ui>
+  <!-- Your app markup here -->
+</block-ui>
+<div class="grid-header-top" [style.background-color]="color">
+  <div class="grid-title">
+    <span>{{ grid.name }}</span>
+  </div>
+  <div class="grid-filter">
+    <button
+      mat-button
+      (click)="open(quickFilters)"
+      *ngIf="iconsConfig.QuickFilters"
+    >
+      <img src="assets/img/psd/quick_filter.png" />&nbsp;&nbsp;Quick Filters
+    </button>
+    <ng-template #popIconInformation>
+      <app-icon-information-popup
+        class="icon-info-popover"
+        [strategy]="strategy"
+      >
+      </app-icon-information-popup>
+    </ng-template>
+    <button
+      mat-button
+      (click)="open(statsFilters)"
+      *ngIf="iconsConfig.StatsFilter"
+    >
+      <img src="assets/img/psd/stats_filter.png" />&nbsp;&nbsp;Strategy Filters
+    </button>
+    <button mat-button (click)="modalScreenshot()">
+      <img src="assets/img/psd/camera.png" />
+    </button>
+    <button
+      mat-button
+      (click)="resetColumnOrder()"
+      *ngIf="iconsConfig.ResetColumnOrder && !isDefault"
+    >
+      <i class="fa fa-undo"></i>&nbsp;&nbsp;Reset Column Order
+    </button>
+    <button mat-button (click)="undoDeletion()" *ngIf="iconsConfig.Undo">
+      <img src="assets/img/psd/undo.png" />
+    </button>
+    <button
+      mat-button
+      [ngbPopover]="popIconInformation"
+      placement="bottom-left"
+      [autoClose]="'outside'"
+      *ngIf="iconsConfig.Information"
+    >
+      <i class="fa fa-info"></i>&nbsp;&nbsp;Icon Information
+    </button>
+  </div>
+</div>
+
+<!-- grid -->
+<div style="font-size: 13px; font-family: Verdana; float: left; width: 100%">
+  <div style="padding-right: 2px">
+    <jqxGrid
+      #mygrid
+      [id]="myGridId"
+      [width]="'100%'"
+      [source]="dataAdapter"
+      [height]="tableHeight"
+      [columngroups]="columnGroups"
+      [selectionmode]="'singlerow'"
+      [rowsheight]="rowHeight"
+      [columnsheight]="50"
+      [enablehover]="false"
+      [sortable]="true"
+      [theme]="'material-green'"
+      [columnsreorder]="true"
+      (onCellclick)="CellClick($event)"
+      (onRowclick)="handleRowClick($event)"
+      (onColumnreordered)="handleColumnDragAndDrop($event)"
+    >
+    </jqxGrid>
+  </div>
+</div>
+
+<!-- pop over -->
+<div #homeformPopover style="position: fixed; z-index: 1000; display: none">
+  <app-historical-stats-pop-over
+    *ngIf="curMatch && curMatch.preMatchOdds"
+    [dataOptions]="curMatch.homeForm"
+    [preMatchOdds]="curMatch.preMatchOdds"
+    [homeId]="curMatch.homeId"
+    [type]="'Home'"
+    [league]="curMatch.league"
+    [position]="popover_pos"
+  >
+  </app-historical-stats-pop-over>
+</div>
+<div #awayformPopover style="position: fixed; z-index: 1000; display: none">
+  <app-historical-stats-pop-over
+    *ngIf="curMatch && curMatch.preMatchOdds"
+    [dataOptions]="curMatch.awayForm"
+    [homeId]="curMatch.awayId"
+    [preMatchOdds]="curMatch.preMatchOdds"
+    [type]="'Away'"
+    [league]="curMatch.league"
+    [position]="popover_pos"
+  >
+  </app-historical-stats-pop-over>
+</div>
+
+<div #matchMomentum1 style="position: fixed; z-index: 1001; display: none">
+  <app-momentum-spline-chart
+    *ngIf="curMatch"
+    [dataOptions]="curMatch.graphicalData1"
+    [labels]="curMatch.splineGraphLabel"
+    [position]="popover_pos"
+    [graphNumber]="'spline' + gridNumber + '1'"
+    [strategy]="strategy"
+  >
+  </app-momentum-spline-chart>
+</div>
+
+<div #matchMomentum2 style="position: fixed; z-index: 1001; display: none">
+  <app-momentum-spline-chart
+    *ngIf="curMatch"
+    [dataOptions]="curMatch.graphicalData2"
+    [labels]="curMatch.splineGraphLabel"
+    [position]="popover_pos"
+    [graphNumber]="'spline' + gridNumber + '2'"
+    [strategy]="strategy"
+  >
+  </app-momentum-spline-chart>
+</div>
+
+<!-- dialog -->
+<ng-template #quickFilters let-modalQuick>
+  <app-quick-filter-popup
+    [modal]="modalQuick"
+    [gridNumber]="gridNumber"
+    [gamesCurrentlyInFilters]="gamesCurrentlyInFilters"
+    [miscFilters]="miscFilters"
+  >
+  </app-quick-filter-popup>
+</ng-template>
+
+<ng-template #screenShot let-modalScreenShot>
+  <app-score-grid-img
+    [selectedRow]="selectedRow"
+  >
+  </app-score-grid-img>
+</ng-template>
+
+<ng-template #statsFilters let-modalStats>
+  <app-stats-filter-popup
+  [modal]="modalStats"
+  >
+  </app-stats-filter-popup>
+</ng-template>
+
+<ng-template #strategyPopup let-modalQuick>
+  <!-- <app-strategy-popup [modal]="modalQuick" [gridNumber]="gridNumber" [gamesCurrentlyInFilters]="gamesCurrentlyInFilters" [miscFilters]="miscFilters">
+  </app-strategy-popup> -->
+  <app-strategy-popup [modal]="modalQuick" [gridNumber]="gridNumber">
+  </app-strategy-popup>
+</ng-template>
+
+<ng-template #settings let-modalSettings>
+  <app-settings-popup
+    [modal]="modalSettings"
+    [color]="color"
+    [gridNumber]="gridNumber"
+    [activeMainColumnVisibility]="activeMainColumnVisibility"
+    [activePreviousStatsColumnVisibility]="activePreviousStatsColumnVisibility"
+    [activeMiscStatsColumnVisibility]="activeMiscStatsColumnVisibility"
+  >
+  </app-settings-popup>
+</ng-template>
+
+<div #predictionPopup style="position: fixed; z-index: 1001; display: none">
+  <app-user-prediction-popup
+    [currentPredictionId]="currentPredictionId"
+    [userPredictions]="userPredictions"
+  >
+  </app-user-prediction-popup>
+</div>
+
+<div #notePopup style="position: fixed; z-index: 1001; display: none">
+  <app-user-note-popup
+    [currentNoteId]="currentNoteId"
+    [userPredictions]="userPredictions"
+  >
+  </app-user-note-popup>
+</div>
+
+<div #oddPopup style="position: fixed; z-index: 1001; display: none">
+  <app-pre-odd-popup [preMatchOdds]="currentOdds"> </app-pre-odd-popup>
+</div>
+
+<div #highlightPopup style="position: fixed; z-index: 1001; display: none">
+  <app-highlight-popup [highlightText]="currentHighlight">
+  </app-highlight-popup>
+</div>

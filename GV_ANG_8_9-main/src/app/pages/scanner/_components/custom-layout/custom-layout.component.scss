@@ -1,0 +1,117 @@
+.layouts-section {
+  padding: 20px;
+  margin: 20px 40px;
+
+  .layouts-wrap {
+    .btn-strategy {
+      margin: 5px;
+      font-size: 12px;
+      color: #1b6753;
+      background-color: rgba(27, 103, 83, 0.1);
+      // background-color: rgba($color: #1b6753, $alpha: 0.7);
+
+      &.layout-active {
+        color: white;
+        background: #146853;
+      }
+    }
+  }
+}
+
+.strategy-section {
+  .strategy-header {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+
+    .strategy-title {
+      font-size: 14px;
+      font-family: "poppins-medium";
+    }
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+}
+
+.btn-createcolumn {
+  // position: absolute;
+  bottom: 0px;
+  min-width: 120px;
+  color: white;
+  font-size: 12px;
+  background: #146853;
+  cursor: pointer;
+  margin: 20px;
+}
+.btn-delcolumn {
+  // position: absolute;
+  bottom: 0px;
+  min-width: 120px;
+  color: white;
+  font-size: 12px;
+  background: #dc3545;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.btn-save {
+  color: #fff !important;
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  margin: 10px;
+}
+
+.btn-strategyOrder {
+  margin: 5px;
+  font-size: 12px;
+  color: white;
+  background: #146853;
+
+}
+
+.btn-strategyOrder.inactive {
+  opacity: .7;
+}
+
+.row{
+  margin-top: 6px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-check-input {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 12px !important;
+  color: var(--color-success) !important;
+  position: relative;
+  margin: 0 0 0 15px !important;
+}
+
+.check-label {
+  font-size: 12px !important;
+  font-family: "poppins" !important;
+  margin-bottom: 0;
+  padding: 2px;
+  vertical-align: super;
+}
+
+.col-sm-offset-2 {
+  margin-left: 16.66666667%;
+}
+span {
+  padding: 5px;
+}

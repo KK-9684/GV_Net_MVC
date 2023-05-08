@@ -1,0 +1,199 @@
+.predictions-market-selection-dialog {
+  .modal-dialog {
+    .modal-content {
+      // width: 500px !important;
+      width: 600px !important;
+      // height: 270px !important;
+      background-color: #FFF;
+      border-radius: 10px;
+
+      .modal-header {
+        background-color: var(--color-success);
+        height: 51px !important;
+        justify-content: center;
+
+        .modal-title {
+          font-size: 14px !important;
+          font-family: "poppins-medium" !important;
+          color: white !important;
+          line-height: 22px;        
+          font-style: normal;
+          font-weight: 500;
+          color:#E5E5E5;
+        }
+
+        .close {
+          margin: 0;
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          // background-color: white !important;
+          color: red !important;
+          font-size: 9px;
+          opacity: 1;
+          z-index: 10;
+        }
+        .back
+        {
+          margin: 0;
+          position: absolute;
+          top: 10px;
+          left: 20px;
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;         
+          color: red !important;
+          font-size: 9px;
+          opacity: 1;
+          z-index: 10;
+          background-color: unset;
+          border: 0px;
+
+        }
+      }
+
+      .modal-body {
+        padding: 0px !important;
+
+        .prediction-list {
+          .prediction-item {
+            height: 47px !important;
+
+            span {
+              font-size: 14px !important;
+              font-family: "poppins-medium" !important;
+              color: var(--color-semi-gray) !important;
+
+              &.prediction-result {
+                color: var(--color-success) !important;
+              }
+            }
+
+            &:hover {
+              background-color: rgba($color: #1b6753, $alpha: 0.1) !important;
+
+              span {
+                // color: var(--color-success) !important;
+                color: #5CAA37 !important;
+              }
+            }
+          }
+
+          .prediction-item-border-bottom {
+            border-bottom: 2px solid var(--color-gray) !important;
+          }
+        }
+      }
+
+      .modal-footer {
+        border-top: none !important;
+
+        button {
+          min-width: 102px !important;
+          font-size: 12px !important;
+          font-family: "poppins" !important;
+
+          &.btn-success {
+            // background-color: var(--color-success) !important;
+            background: #5CAA37 !important;
+          }
+
+          i {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep table.predictions-table {
+  width: 100%;
+  border-spacing: 8px !important;
+  border-collapse: separate;
+
+  thead {
+    // background-color: var(--color-success) !important;
+    background-color:  unset !important;
+    color:#232323;
+     
+
+    tr {
+      th {
+        // color: white !important;
+        color:#232323 !important;
+
+        &.mat-column-actions,
+        &.mat-column-prediction {
+          text-align: center !important;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &.mat-column-actions,
+        &.mat-column-prediction {
+          text-align: center !important;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected {
+  .mat-option-text {
+    color: var(--color-success) !important;
+  }
+}
+
+::ng-deep .mat-form-field-underline {
+  .mat-form-field-ripple {
+    background-color: var(--color-success) !important;
+  }
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: var(--color-success) !important;
+}
+
+.btn-cancel
+{
+  // margin-left: 50px;
+  height: 45px;
+}
+.modal-footer {
+  .btn-prediction {
+    margin-left: 130px;
+    background: #5CAA37 !important;
+    border-radius: 8px;
+    height: 45px;
+  }
+}
+
+.mat-select-arrow-wrapper.dropdown-arrow
+{
+  display: flex;
+vertical-align: middle;
+right: 155px;
+position: relative;
+}
+
+
+.mat-select-arrow-wrapper.dropdown-arrow-draw
+{
+  display: flex;
+vertical-align: middle;
+right: 25px;
+position: relative;
+}
+
+th.mat-header-cell
+{
+  border-bottom-width: 0px !important;
+}

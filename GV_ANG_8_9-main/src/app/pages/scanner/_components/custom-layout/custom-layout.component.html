@@ -1,0 +1,78 @@
+<div
+  style="margin: 30px"
+>
+<h2 >Custom Layout</h2>
+<div class="form-horizontal">
+  <div class="row">
+    <label class="col-sm-2" for="name">Layout Name</label>
+    <div style="margin-left: 5px;">
+      <input
+        #name
+        id="name"
+        style="width: auto; vertical-align: super;"
+        [(ngModel)]="selectedLayout.name"
+      />
+
+      <input
+        #checkbox
+        type="checkbox"
+        class="form-check-input"
+        [checked]="!selectedLayout.hidden"
+        (change)="selectedLayout.hidden = !selectedLayout.hidden"
+      />
+      <label class="check-label">Show on navigation bar</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2" style="margin-top: 8px;" for="strategy"
+      >Strategy Order
+    </label>
+    <div
+      id="strategy"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+
+      (cdkDropListDropped)="drop($event)"
+    >
+    <ng-container *ngFor="let strategy of selectedLayout.structure;index as i;">
+
+
+    <div
+        class="btn btn-strategyOrder"
+
+        cdkDrag
+        (click)="strategy.Visible = !strategy.Visible"
+        [ngClass]="(strategy.Visible)?'active':'inactive'"
+
+         *ngIf="getStrategyName(strategy.StrategyId)">
+          {{ getStrategyName(strategy.StrategyId) }}
+    </div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>
+
+
+<div style="text-align: center;">
+
+    <button
+      mat-flat-button
+      class="btn btn-createcolumn"
+      (click)="saveLayout()"
+    >
+      Save
+    </button>
+    <button
+    mat-flat-button
+    class="btn btn-delcolumn"
+    mat-dialog-close
+    (click)="cancelLayout()"
+  >
+    Cancel
+  </button>
+
+</div>
+
+</div>

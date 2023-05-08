@@ -1,0 +1,207 @@
+.mat-elevation-z8 {
+  overflow-y: auto;
+}
+::ng-deep table {
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        font-size: 14px !important;
+        font-family: "poppins-medium" !important;
+        color: var(--color-semi-gray) !important;
+
+        &.mat-column-kick-off {
+          width: 13% !important;
+        }
+
+        &.mat-column-country {
+          width: 11% !important;
+        }
+
+        &.mat-column-league {
+          width: 21% !important;
+        }
+
+        &.mat-column-home {
+          width: 20% !important;
+        }
+
+        &.mat-column-away {
+          width: 20% !important;
+        }
+
+        &.mat-column-predictions {
+          width: 9% !important;
+          text-align: center !important;
+        }
+
+        &.mat-column-favourites {
+          width: 6% !important;
+          text-align: center !important;
+        }
+
+        &.mat-column-notes {
+          width: 6% !important;
+          text-align: center !important;
+        }
+
+        &.mat-column-strategies {
+          width: 6% !important;
+          text-align: center !important;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgba($color: #1b6753, $alpha: 0.1) !important;
+        td {
+          color: var(--color-success) !important;
+        }
+      }
+
+      td {
+        font-size: 14px !important;
+        font-family: "poppins-medium" !important;
+        &.mat-column-kick-off {
+          width: 13% !important;
+        }
+
+        &.mat-column-home {
+          width: 35% !important;
+          text-align: right;
+          padding-right: 20px;
+        }
+
+        &.mat-column-away {
+          width: 35% !important;
+          padding-left: 20px;
+        }
+        &.mat-column-colon {
+          padding: 0 5px;
+        }
+        &.mat-column-predictions,
+        &.mat-column-favourites,
+        &.mat-column-notes,
+        &.mat-column-strategies{
+          text-align: center;
+          width: 55px;
+        }
+        &.mat-column-strategies {
+          padding-right: 0px !important;
+        }
+        img {
+          width: 24px !important;
+          height: 24px !important;
+          border-radius: 50% !important;
+        }
+        img.strategyicon {
+          cursor: pointer;
+          color: #7f8593;
+          font-size: 20px;
+        }
+        .icon-button {
+          cursor: pointer;
+          color: #7f8593;
+          font-size: 20px;
+        }
+        .icon-size-md {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+.tableTitle{
+  background: #1b6753;
+  font-size: 16px;
+  color: white;
+  padding: 5px 0 5px 20px;
+  // margin-top: 10px;
+  padding: 13px 0px 10px 20px;
+}
+.search-box {
+  // border-radius: 6px;
+  // border: 1px solid #1b6753;
+  // color: #1b6753;
+  color: #1b6753;
+  border: 2px solid #1B6853;
+  box-sizing: border-box;
+  border-radius: 36px;
+  background: #F7F7F7;
+  opacity: 0.5;
+  height: 50px;
+}
+.search-icon {
+  position:absolute;
+  top: 6px;
+  right: 20px;
+  width:24px;
+  height:24px;
+  color: #1b6753;
+  top: 13px;
+}
+.clear-icon {
+  cursor: pointer;
+}
+
+
+
+.mat-menu-item
+{
+color: #E5E5E5;
+
+  input[type=checkbox]:checked {
+  background-color: #1B6853 !important;
+  color: #ffffff !important;
+}
+
+}
+
+
+.mat-menu-panel {
+ 
+  background: #1B6853 !important;
+}
+.mat-table {
+  background: rgb(255, 255, 255);
+  border-collapse: separate;
+  //border-spacing: 0 15px;
+}
+
+.heart-cell {
+  padding-top: 6px;
+}
+.document-text-cell {
+  padding-top: 6px;
+}
+.firstline-cell {
+  padding-bottom: 10px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #FED100;;
+  background-color: #FED100;
+}
+.custom-control-label::before {
+  top: 1rem;
+  left: 12rem;
+  margin: 0px 5px;
+}
+.custom-control-label::after
+ {
+    top: calc(1rem + 2px);
+    left: calc(11.75rem + 2px);
+    margin: 0px 10px;
+}
+
+.custom-control-label
+{
+  margin-left: -40px;
+  margin-right: 30px;
+
+}

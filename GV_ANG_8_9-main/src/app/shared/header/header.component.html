@@ -1,0 +1,82 @@
+<div>
+    <nav class="navbar navbar-expand-sm navbar-light scanner-header" style="display: block;">
+        <div >
+            <a class="navbar-brand" href="#" style="float: left;">
+                <img alt="logo" class="logo-img" src="assets/img/logo-light.png">
+            </a>
+
+            <ul class="navbar-nav d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['/planner/schedule']">Schedule</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['/planner/strategy']">Strategy</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['/scanner']">Scanner</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profile-drop-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        John Doe
+                        <i class="far fa-angle-down ml-1" style="font-size: 20px;"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="profile-drop-down">
+                        <a class="dropdown-item" href="#">
+                          <i class="far fa-black-tie"></i>
+                          <span>Action</span>
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          <i class="far fa-cog"></i>
+                          <span>Settings</span>
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          <i class="far fa-vcard"></i>
+                          <span>Subscription</span>
+                        </a>
+                        <a class="dropdown-item" (click)="logout()">
+                          <i class="far fa-sign-out-alt"></i>
+                          <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link theme-icon" href="#">
+                        <i class="fal fa-moon light-theme" style="color: #1b6753; font-size: 20px;"></i>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light scanner-header grid-options" *ngIf="isScanner()">
+        <ul class="navbar-nav d-flex align-items-center">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/scanner/layout','default']">Default</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/scanner/layout','favourites']">Favourites</a>
+            </li>
+            <li class="nav-item dropdown" [routerLinkActive]="['active']">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Strategy</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/scanner/layout', 'strategy', { match: 'any' }]">
+                        <span>Any</span>
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/scanner/layout','strategy', { match: 'linked' }]">
+                        <span>Linked</span>
+                    </a>
+                </div>
+            </li>
+            <ng-container *ngFor="let layout of layouts">
+              <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!layout.hidden">
+                <a class="nav-link" [routerLink]="['/scanner/layout', layout.layoutId]">{{layout.name}}</a>
+              </li>
+            </ng-container>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/scanner', 'managelayouts']">Manage Layouts</a>
+            </li>
+        </ul>
+    </nav>
+</div>

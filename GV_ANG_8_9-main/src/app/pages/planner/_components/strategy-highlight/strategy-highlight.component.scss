@@ -1,0 +1,56 @@
+.highlight-container {
+  min-height: 800px;
+
+  .spinnerWrap {
+    display: flex;
+    
+    p {
+      margin: auto;
+    }
+  }
+  .color-picker-wrap {
+    display: block;
+  }
+  .icon-info {
+    margin-left: 10px;
+    width: 20px;
+  }
+  .highlight-title {
+    padding: 0;
+    margin: 10px 0;
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .padding-none {
+      padding: 0;
+  }
+
+  .margin-top-bottom {
+      margin: 16px 0;
+  }
+
+  .highlight-shape-select {
+    padding: 7px;
+  }
+}
+.disabled {
+  opacity: .7 !important;
+}
+
+.section-card {
+  background: #F7F7F7;
+  padding: 1rem 2rem;
+  margin-bottom: .5rem;
+
+  .highlight-title {
+    font-size: 18px;
+    line-height: 25px;
+    color: #1B6853;
+  }
+}
+
+.info-icon {
+  height: 15px;
+  vertical-align: top;
+}

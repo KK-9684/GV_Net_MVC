@@ -1,0 +1,32 @@
+<div class="number-picker">
+  <div class="color-picker">
+    <mat-icon svgIcon="color-picker" class="color-picker-icon"></mat-icon>
+  </div>
+  <ng-number-picker
+    [id]="name"
+    [(value)]="value"
+    [min]="'0'"
+    [max]="'50'"
+    [step]="'0.5'"
+    [buttonsOrientation]="'h'"
+    [size]="'md'"
+    [showDownButton]="true"
+    [showUpButton]="true"
+    [inputReadOnly]="false"
+    [mouseWheel]="true"
+    (valueChange)="!disabled && handleValueChange($event)"
+    [arrowKeys]="true"
+    [placeholder]="'Stats Difference'"
+    [style.backgroundColor]="color"
+    [style.borderRadius]="'5px'"
+  ></ng-number-picker>
+</div>
+
+<!-- (minReached)="onMinReached($event)"
+    (maxReached)="onMaxReached($event)"
+    (pickStarted)="onPickStarted($event)"
+    (pickStoped)="onPickStoped($event)"
+    (pickUpStarted)="onPickUpStarted($event)"
+    (pickDownStarted)="onPickDownStarted($event)"
+    (pickUpStoped)="onPickUpStoped($event)"
+    (pickDownStoped)="onPickDownStoped($event)" -->

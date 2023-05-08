@@ -1,0 +1,30 @@
+<div class="row m-0 bg-white strategy-alert fit-content mt-4" [ngClass]="{'disabled': disabled}">
+  <section class="col-12 mb-3">
+    <h4 class="section-title">Telegram alerts</h4>
+    <mat-radio-group
+      [(ngModel)]="telegramAlertTypeId"
+      [disabled]="disabled"
+      (change)="handleAlertValueChange($event)">
+      <div class="ml-4">
+        <mat-radio-button [value]="0">
+          Receive alerts for all new matches meeting strategy filter
+        </mat-radio-button>
+      </div>
+      <div class="ml-4">
+        <mat-radio-button [value]="1">
+          Only receive alerts for matches linked to strategy
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </section>
+  <section class="col-12">
+    <h4 class="section-title">Sound Notifications</h4>
+    <mat-checkbox
+      class="example-margin ml-4"
+      [(ngModel)]="soundAlerts"
+      [disabled]="disabled"
+      (change)="handleSoundAlertsChange($event)">
+      Play sound when new match added to grid
+    </mat-checkbox>
+  </section>
+</div>

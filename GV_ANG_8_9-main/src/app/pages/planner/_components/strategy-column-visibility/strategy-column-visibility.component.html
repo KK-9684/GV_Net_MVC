@@ -1,0 +1,313 @@
+
+ 
+  <div [ngClass]="{'disabled': disabled}">
+
+   
+    <div class="previewmain" style="text-align: center">
+      <h2 style="margin-top: 20px">Preview</h2>
+      <div class="column-preview">
+        <div class="column-preview-child">
+          <div class="child-title-div">
+            <span class="child-title">Main columns</span>
+          </div>
+          <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="!disabled && drop($event, 'mainColumns')"
+            class="column-preview-section d-flex justify-content-center"
+          >
+            <div class="column-preview-detail" *ngFor="let column of mainColumns">
+              <img
+                cdkDrag
+                *ngIf="columnVisibilityConfig[column.key]"
+                [src]="'assets/img/psd/' + imageUrls[column.key] + '.png'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="column-preview-child">
+          <div class="child-title-div">
+            <span class="child-title">Previous Stats Columns</span>
+          </div>
+          <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="!disabled && drop($event, 'prevStatsColumns')"
+            class="column-preview-section d-flex justify-content-center"
+          >
+            <div
+              class="column-preview-detail"
+              *ngFor="let column of prevStatsColumns"
+            >
+              <img
+                cdkDrag
+                *ngIf="columnVisibilityConfig[column.key]"
+                [src]="'assets/img/psd/' + imageUrls[column.key] + '.png'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="column-preview-child">
+          <div class="child-title-div">
+            <span class="child-title">Misc Columns</span>
+          </div>
+          <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="!disabled && drop($event, 'miscColumns')"
+            class="column-preview-section d-flex justify-content-center"
+          >
+            <div class="column-preview-detail" *ngFor="let column of miscColumns">
+              <img
+                cdkDrag
+                *ngIf="columnVisibilityConfig[column.key]"
+                [src]="'assets/img/psd/' + imageUrls[column.key] + '.png'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="column-preview-child" *ngIf="customColumns.length">
+          <div class="child-title-div">
+            <span class="child-title">Custom Columns</span>
+          </div>
+          <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="!disabled && drop($event, 'customColumns')"
+            class="column-preview-section d-flex justify-content-center"
+          >
+            <div class="column-preview-detail" *ngFor="let column of customColumns">
+              <img
+                cdkDrag
+                *ngIf="columnVisibilityConfig[column.key]"
+                [src]="'assets/img/psd/' + 'custom' + '.png'"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="function-button-section d-flex justify-content-end">
+        <button class="btn discard-changes" (click)="!disabled && handleDiscardChanges()">
+          Discard Changes
+        </button>
+      </div>
+    
+    </div>
+
+       
+        <!-- Wrapper -->
+        <div class="wrapper-strategy">
+          <h2>Order and Visibility</h2>
+
+            <div class="column-section">
+              <div class="section-header d-flex ml-5">
+                <span class="section-title text-semi-gray">Main Columns</span>
+              </div>
+              <div class="column-list row mr-4 ml-4" cdkDropListGroup>
+                <ng-container *ngFor="let column of mainColumns; let i = index">
+                  <div
+
+                    cdkDropList
+                    cdkDropListOrientation="horizontal"
+                    [cdkDropListData]="{ item: column, index: i }"
+                    (cdkDropListDropped)="!disabled && drop($event, 'mainColumns')"
+                  >
+                    <div
+                      class="btn btn-column mb-3"
+                      [ngClass]="
+                        columnVisibilityConfig[column.key]
+                          ? 'column-visible'
+                          : 'column-invisible'
+                      "
+                      (click)="!disabled && onClickVisibility(column)"
+                      cdkDrag
+
+                    >
+                      {{ column.label }}
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="column-section">
+              <div class="section-header d-flex ml-5">
+                <span class="section-title text-semi-gray">Previous Stats Columns</span>
+              </div>
+              <div
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+                class="column-list row mr-4 ml-4"
+                (cdkDropListDropped)="!disabled && drop($event, 'prevStatsColumns')"
+              >
+                <div
+                  class="btn btn-column"
+                  *ngFor="let column of prevStatsColumns"
+                  [ngClass]="
+                    columnVisibilityConfig[column.key]
+                      ? 'column-visible'
+                      : 'column-invisible'
+                  "
+                  (click)="!disabled && onClickVisibility(column)"
+                  cdkDrag
+                >
+                  {{ column.label }}
+                </div>
+              </div>
+            </div>
+
+            <div class="column-section">
+              <div class="section-header d-flex ml-5">
+                <span class="section-title text-semi-gray">Misc Columns</span>
+              </div>
+              <div
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+                class="column-list row mr-4 ml-4"
+                (cdkDropListDropped)="!disabled && drop($event, 'miscColumns')"
+              >
+                <div
+                  class="btn btn-column"
+                  *ngFor="let column of miscColumns"
+                  [ngClass]="
+                    columnVisibilityConfig[column.key]
+                      ? 'column-visible'
+                      : 'column-invisible'
+                  "
+                  (click)="!disabled && onClickVisibility(column)"
+                  cdkDrag
+                >
+                  {{ column.label }}
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <!-- Wrapper -->
+        <div class="wrapper-cus-column">
+        <h2 >Custom Columns</h2>
+        <div class="column-section" *ngIf="customColumns.length">
+          <div class="section-header d-flex ml-4">
+            <span class="section-title">Active Custom Columns</span>
+          </div>
+          <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            class="column-list row mr-4 ml-4 mb-5"
+            (cdkDropListDropped)="!disabled && drop($event, 'customColumns')"
+          >
+            <div
+              class="btn btn-column"
+              *ngFor="let column of customColumns"
+              [ngClass]="
+                columnVisibilityConfig[column.key]
+                  ? 'column-visible'
+                  : 'column-invisible'
+              "
+              cdkDrag
+            >
+              <span (click)="!disabled && onClickVisibility(column)">
+                {{ column.label }}
+              </span>
+              <span (click)="!disabled && editCustomColumn(column.key)" style="margin-left: 5px">
+                <i class="fal fa-edit"></i>
+              </span>
+              <span (click)="!disabled && deleteCustomColumn(column)" style="margin-left: 5px">
+                <i class="fal fa-times-circle"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="section-header d-flex ml-5">
+          <span class="section-title create-custom-column">Create New Custom Column</span>
+        </div>
+        <div style="display: flex;margin: 10px 50px;">
+          <div class="form-horizontal">
+            <div class="row align-items-baseline">
+              <label class="col-sm-4" for="columnName">Name</label>
+              <div class="col-sm-8">
+                <input
+                  #name
+                  class="form-control colname-height"
+                  id="columnName"
+                  placeholder="Column Name"
+                  [disabled]="disabled"
+                  (keyup)="handleNameChange($event.target.value)"
+                />
+              </div>
+            </div>
+            <div class="row align-items-baseline">
+              <label class="col-sm-4" for="stat">Stat</label>
+              <div class="col-sm-8">
+                <select
+                  class="custom-select custom-select-sm mr-5 field-select"
+                  [value]="selectedField"
+                  [disabled]="disabled"
+                  (change)="handleFieldChange($event.target.value)"
+                >
+                  <option *ngFor="let field of fieldNames" [value]="field.value">
+                    {{ field.text }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row align-items-baseline">
+              <label class="col-sm-4" for="interval">Previous Minutes</label>
+              <div class="col-sm-8">
+                <!--<select
+                  class="custom-select custom-select-sm minute-select"
+                  placeholder="Value"
+                  (change)="handleMinuteChange($event.target.value)"
+                >
+                  <option *ngFor="let minute of minutes" [value]="minute.value">
+                    {{ minute.text }}
+                  </option>
+                </select>-->
+                <div style="display: flex;">
+                <input
+                type="text"
+                class="form-control prevmin text-success border-0"
+                placeholder="Minutes"
+                [disabled]="disabled"
+                (keypress)="onlyNumbers($event)"
+                (keyup)="handleMinuteChange($event.target.value)"
+              />
+              <button
+              class="
+                btn btn-semi-success
+                d-flex
+                align-items-center
+                text-white btn-min
+                prevmin-btn
+              "
+              type="button"
+            >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.0003 1.66669C5.40866 1.66669 1.66699 5.40835 1.66699 10C1.66699 14.5917 5.40866 18.3334 10.0003 18.3334C14.592 18.3334 18.3337 14.5917 18.3337 10C18.3337 5.40835 14.592 1.66669 10.0003 1.66669ZM13.6253 12.975C13.5087 13.175 13.3003 13.2834 13.0837 13.2834C12.9753 13.2834 12.867 13.2584 12.767 13.1917L10.1837 11.65C9.54199 11.2667 9.06699 10.425 9.06699 9.68336V6.26669C9.06699 5.92502 9.35033 5.64169 9.69199 5.64169C10.0337 5.64169 10.317 5.92502 10.317 6.26669V9.68336C10.317 9.98336 10.567 10.425 10.8253 10.575L13.4087 12.1167C13.7087 12.2917 13.8087 12.675 13.6253 12.975Z" fill="white"/>
+              </svg>
+              
+            </button>
+          </div>
+              </div>
+            </div>
+            <!-- create column btn -->
+              <div class="row mb-5">
+                <div style="position: relative">
+                  <button
+                    class="btn btn-createcolumn"
+                    (click)="handleCreateColumn()"
+                    [disabled]="disabled || !isColumnName()">               
+                    Create Column
+                  </button>
+                </div>
+             </div>
+
+          </div>
+      
+          
+
+        </div>
+  </div>
+         
+  </div>
+ 

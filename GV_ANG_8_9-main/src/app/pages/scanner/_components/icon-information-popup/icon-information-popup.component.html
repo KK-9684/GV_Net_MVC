@@ -1,0 +1,37 @@
+<div>
+  <mat-accordion class="example-headers-align" multi [hideToggle]="true"
+    *ngFor="let section of icon_information; let i = index;">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header class="section-heading">
+        <mat-panel-title class="section-title"> {{section.title}} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table style="width: 100%;">
+        <tr *ngFor="let icon of section.icons">
+          <td colspan="4" style="text-align: center;">
+            <img [src]="icon.src" class="icon-info">
+          </td>
+          <td colspan="6" [class]="(i == 1 || i == 2) ? 'stats-padding' : ''">
+            {{icon.text}}
+          </td>
+        </tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align" multi [hideToggle]="true">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header class="section-heading">
+        <mat-panel-title class="section-title"> Statistics Timings </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table style="width: 100%;">
+        <tr *ngFor="let info of statisticsInfo">
+          <td colspan="4" style="text-align: center;">
+            <div class="stats-info" [style.background]="chartSettings[info.key]"></div>
+          </td>
+          <td colspan="6" class="stats-padding">
+            {{info.text}}
+          </td>
+        </tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

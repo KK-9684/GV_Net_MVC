@@ -1,0 +1,89 @@
+
+.rule-preview {
+  padding: 20px 0;
+  font-size: 18px !important;
+}
+
+.action-buttons {
+  .save {
+    background-color: #38c172;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 0;
+  }
+  .save-dropdown {
+    background-color: #38c172;
+    padding-left: 0;
+    padding-right: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .preset {
+    background-color: #3490dc;
+    margin: 0 4px;
+  }
+  .cancel {
+    background-color: #6c757d;
+  }
+}
+.mat-expansion-panel-header {
+  background-color: rgb(0 0 0 / 3%);
+}
+
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.mat-radio-group {
+  margin-left: 20px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.mat-form-field {
+  margin: 10px 0;
+}
+.mat-label {
+  padding: 0 10px;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 85%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #6c757d;
+  padding-bottom: 0.25rem !important;
+  padding-top: 0.25rem !important;
+}
+.mat-icon {
+  font-size: small;
+  height: auto;
+  width: auto;
+}
+.mat-icon:hover {
+  cursor: pointer;
+}
+.col-sm-4 {
+  display: grid;
+}
+.inputnum {
+  margin-left: 20px;
+}
+.timerange {
+  margin: auto;
+}

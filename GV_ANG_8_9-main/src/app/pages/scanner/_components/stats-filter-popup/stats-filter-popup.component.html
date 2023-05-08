@@ -1,0 +1,179 @@
+<img src="./../../assets/close.png" class="pull-right" style="width:30px; margin-top:-15px !important; margin-right:-15px !important;cursor: pointer;font-weight:bold;" (click)="modal.dismiss('Cross click')">
+<div class="modal-header px-5">
+    <div class="row">
+        <div class="col-md-12 text-center text-white" style="font-size: 18px !important;font-weight: bold;">
+            <mat-icon class="float-left" (click)="modal.dismiss('Cross click')">keyboard_backspace</mat-icon><span>Stats filter</span> <!--: <img title="Please select the statistics type of score and give a value to be filtered" src="./../../assets/info.png" style="width: 18px;">-->
+        </div>
+    </div>
+</div>
+<div class="modal-body p-5" style="color:rgb(83, 82, 82) !important">
+    <div class="col-12 filters-section section-headers-active">
+        <div class="row">
+          <div class="col-12 section-header">
+            <span class="section-title text-semi-gray">Active Filters</span><mat-icon class="check-circle-icon">check_circle</mat-icon>
+          </div>
+          <div class="col-12 section-content">
+            <div class="row">
+              <ng-container *ngFor="let filter of filters; index as i">
+                <div class="col-auto mt-1 mb-1">
+                  <button
+                    class="
+                      btn btn-visibility
+                      text-capitalize
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      selected-filters
+                    "
+                    [disabled]="disabled"
+                    (click)="onClickFilter(filter)"
+                  >
+                    <span class="mr-2">{{ filter }}</span>
+                    <mat-icon class="cancel-icon">cancel</mat-icon>
+                  </button>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 filters-section">
+        <div class="row">
+          <div class="col-12 section-header px-0">
+            <span class="section-title text-semi-gray">Filter Creation</span>
+            <span
+              matTooltip="Correct Score Filters sample text"
+              matTooltipPosition="above"
+            >
+            <mat-icon class="info-icon">info</mat-icon>
+            </span>
+          </div>
+          <div class="col-12 section-content px-0">
+            <mat-accordion class="headers-align" [multi]="true">
+              <mat-expansion-panel #panel1 (opened)="closeOtherPanels(panel1)" class="expansion-panel-header" >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <span class="badge">Step 1</span> &nbsp;Define left operand
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-strategy-filters-operand
+                  #leftOperand
+                  [type]="type_left">
+                </app-strategy-filters-operand>
+              </mat-expansion-panel>
+              <mat-expansion-panel #panel2 (opened)="closeOtherPanels(panel2)" class="expansion-panel-header" >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <span class="badge">Step 2</span> &nbsp;Select
+                    comparator</mat-panel-title
+                  >
+                </mat-expansion-panel-header>
+                <div class="form-group row mb-2">
+                  <mat-label class="col-sm-2" style="margin: 30px 0 0 10px"
+                    >Comparator</mat-label
+                  >
+    
+                  <mat-form-field class="col-sm-8">
+                    <mat-select [(ngModel)]="selectedStatFilterType">
+                      <mat-option
+                        *ngFor="let filter of filterTypes"
+                        [value]="filter"
+                      >
+                        {{ filter }}
+                      </mat-option>
+                    </mat-select>
+    
+                    <mat-hint align="start"
+                      >Select the comparator to be used</mat-hint
+                    >
+                  </mat-form-field>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel #panel3 (opened)="closeOtherPanels(panel3)" class="expansion-panel-header" >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <span class="badge">Step 3</span> &nbsp;Define right
+                    operand</mat-panel-title
+                  >
+                </mat-expansion-panel-header>
+                <app-strategy-filters-operand
+                  #rightOperand
+                  [type]="type_right">
+                </app-strategy-filters-operand>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <div class="rule-preview my-4">
+              <strong class="mr-1 preview-header"> Preview: </strong>
+              <mat-icon class="preview-icon">visibility</mat-icon>
+              <mark>{{leftVal1_pre1()}}{{leftVal1_pre2()}}{{leftVal1_pre3()}}</mark>
+              <mark>{{leftOperator()}}</mark>
+              <mark>{{leftVal2_pre1()}}{{leftVal2_pre2()}}{{leftVal2_pre3()}}</mark>
+              <mark>&nbsp;{{selectedStatFilterType}}&nbsp;</mark>
+              <mark>{{rightVal1_pre1()}}{{rightVal1_pre2()}}{{rightVal1_pre3()}}</mark>
+              <mark>{{rightOperator()}}</mark>
+              <mark>{{rightVal2_pre1()}}{{rightVal2_pre2()}}{{rightVal2_pre3()}}</mark>
+            </div>
+            <div class="action-buttons">
+              <button
+                mat-flat-button
+                class="save"
+                color="primary"
+                (click)="onSaveRule()"
+              >
+              <mat-icon class="add-icon">add</mat-icon> Add Rule
+              </button>
+              <!--<button
+                mat-flat-button
+                [matMenuTriggerFor]="menu1"
+                class="save-dropdown"
+                color="primary"
+              >
+                <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #menu1="matMenu">
+                <button mat-menu-item (click)="!disabled && onSaveAnotherRule()">
+                  <mat-icon>save</mat-icon>
+                  <span>Save and create another</span>
+                </button>
+              </mat-menu>-->
+    
+              <button
+                mat-flat-button
+                class="preset"
+                color="primary"
+                [matMenuTriggerFor]="menu2"
+              >
+                <i class="fas fa-magic"></i> Preset Filters
+                <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #menu2="matMenu">
+                <button
+                  mat-menu-item
+                  *ngFor="let rule of presetRules"
+                  (click)="!disabled && onClickMenuItem(rule)"
+                >
+                  {{ rule.name }}
+                </button>
+              </mat-menu>
+    
+              <button
+                mat-flat-button
+                class="cancel"
+                color="primary"
+                (click)="!disabled && onCancelRule()"
+              >
+                <i class="fas fa-times"></i> Cancel
+              </button>
+              <button
+                mat-flat-button
+                class="apply-filters"
+                color="primary"
+                (click)="!disabled && applyStrategyFilters()"
+              >
+                <i class="fas fa-check"></i> Apply Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

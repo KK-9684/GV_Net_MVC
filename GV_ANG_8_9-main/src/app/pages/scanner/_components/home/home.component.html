@@ -1,0 +1,52 @@
+<div *ngIf="loaded" style="margin-top: 20px;">
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col-md-11">
+        </div>
+        <div class="col-md-1">
+            <!-- <div class="pull-right" style="display: block; background-color: #1b6853; border-radius: 50px; width: 30px; height: 30px; cursor: pointer; padding: 4px;">
+                <img (click)="addNewGrid()" src="assets/img/psd/new_grid.png" style="width: 100%;">
+            </div> -->
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12" *ngFor="let grid of grids;let i = index;" style="margin-top: 25px;">
+          <app-score-grid
+              [grid]="grid"
+              [gridName]="grid.name"
+              [gridNumber]="i"
+              [strategy]="grid.strategy"
+              [linkedMatches]="grid.linkedMatches"
+              [userPredictions]="userPredictions"
+              [favouriteMatches]="favouriteMatches"
+              [gridOptions]="gridOptions"
+          >
+          </app-score-grid>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!loaded" style="margin-top:22%;margin-left:42%">
+    <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading </span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>

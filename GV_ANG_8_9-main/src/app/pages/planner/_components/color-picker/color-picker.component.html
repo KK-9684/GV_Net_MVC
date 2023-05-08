@@ -1,0 +1,26 @@
+<div class="input-group">
+  <span class="input-label my-auto col-4 px-0">{{label}}:&nbsp;</span>
+  <input
+    type="text"
+    class="form-control bg-semi-success text-success border-0 input-field "
+    [placeholder]="label"
+    [(value)]="color"
+    (change)="handleChangeColor($event.target.value)"
+    [disabled]="disabled"
+  >
+  <div class="input-group-append">
+    <button
+      [colorPicker]="color"
+      [cpPosition]="cpPosition"
+      [cpPositionOffset]="'50%'"
+      (colorPickerSelect)="handleChangeColor($event)"
+      [cpOKButton]="true"
+      [cpSaveClickOutside]="false"
+      class="btn btn-semi-success d-flex align-items-center"
+      type="button"
+      [disabled]="disabled"
+    >
+      <mat-icon svgIcon="color-picker" class="color-picker-icon"></mat-icon>
+    </button>
+  </div>
+</div>

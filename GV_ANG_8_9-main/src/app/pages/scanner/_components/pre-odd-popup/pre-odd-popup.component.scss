@@ -1,0 +1,40 @@
+$radius: 5px;
+
+.table {
+  background-color: white;
+  box-shadow: 0 0 10px;
+  border-spacing: 0 !important;
+  width: 100% !important;
+  border-collapse: collapse;
+
+  thead tr, thead th {
+    border: 1px solid #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    //text-transform: uppercase;
+    background-color: #0e5f4b;
+  }
+
+  thead {
+    border: 1px #fff;
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+
+  tr {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+
+  td, th {
+    vertical-align: middle;
+    margin-bottom: 10px;
+    border: none;
+  }
+
+  td {
+    border: 1px solid gray;
+  }
+  
+
+}

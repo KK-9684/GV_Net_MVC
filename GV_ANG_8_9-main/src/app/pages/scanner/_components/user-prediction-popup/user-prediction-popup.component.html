@@ -1,0 +1,21 @@
+<table 
+    class="table mat-sort table-hover responsive nowrap ng-star-inserted"
+    *ngIf="userPredictions && 0 !== userPredictions.length"
+>
+    <thead class="prediction-thead">
+        <tr style="color:#fff;">
+            <th>Market</th>
+            <th>Outcome</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prediction of userPredictions[currentPredictionId].predictions">
+            <td>
+                <div *ngIf="prediction">{{prediction.market}}</div>
+            </td>
+            <td>
+                <div *ngIf="prediction">{{prediction.outcome}}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+.table thead tr,
+.table thead th {
+  border: 1px solid #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  //text-transform: uppercase;
+  background-color: #0e5f4b;
+}
+
+.table {
+    background-color: white;
+}
+.table thead {
+  border: 1px #fff;
+}
+.table td,
+.table th {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  border: none;
+}
+.table {
+  border-spacing: 0 !important;
+  width: 100% !important;
+  border-collapse: separate;
+}
+
+.table td {
+    border: 1px solid gray;
+}

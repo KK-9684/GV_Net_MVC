@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FootballStatistics</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+
+    path.ct-line.ct-threshold-above {
+      stroke: #52B030 !important;
+      stroke-width: 2px;
+    }
+    path.ct-line.ct-threshold-below {
+      stroke: #006DCC !important;
+      stroke-width: 2px;
+    }
+    line.ct-point {
+      stroke-width: 4px !important;
+    }
+    .ct-series.greyline .ct-line.ct-threshold-above {
+      stroke:grey !important;
+      stroke-width: 4px;
+    }
+    .ct-series.greyline .ct-line.ct-threshold-below {
+      stroke:grey !important;
+      stroke-width: 4px;
+    }
+    .ct-series.goal {
+      stroke:rgb(49,233,3) !important;
+    }
+    .ct-series.corner {
+      stroke:blue !important;
+    }
+    .ct-series.redCard {
+      stroke: red !important;
+    }
+    .ct-series.yellowCard {
+      stroke:#FFA500 !important;
+    }
+    .ct-series.offTarget {
+      stroke:purple !important;
+    }
+    .ct-series.onTarget {
+      stroke:rgb(137,231,248) !important;
+    }
+
+  </style>
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+</body>
+</html>

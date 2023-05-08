@@ -1,0 +1,257 @@
+.strategy-appearance {
+
+  min-height: 400px;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+
+  .wrapper
+  {
+    padding: 10px 0px;
+  }
+
+
+  .padding-right-0 {
+    padding-right: 0px;
+  }
+  .momentum
+  {
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+    margin-bottom:40px;
+  }
+  .p1p2
+{
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+     
+}
+.p1p2combo
+{
+    background: #F7F7F7; 
+    margin-bottom:40px;
+     
+
+}
+.icon
+{
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+    
+}
+.iconcombo
+{
+    background: #F7F7F7;
+    margin-bottom:40px;
+    padding-bottom: 50px;  
+
+    button, button:focus {
+      height: 45px;
+      width: 45px;
+       
+  }
+  input[type=number],input[type=number]:focus
+  {
+    background-color: #F7F7F7 !important; 
+    box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+    border-radius: 8px 0 0 8px; 
+
+  }
+  .btn-clr {
+    background-color: #F7F7F7 !important;  
+  }
+  
+
+
+}
+
+  .graph-type
+    {
+      flex: 0 0 35%;
+      max-width: 35%;
+    }
+
+  .input-group {
+    margin-bottom: 10px;
+
+    .input-label {
+      min-width: 55px;
+    vertical-align: middle;
+    margin-right: 5px !important;
+    font-size: 14px;
+    line-height: 19px;
+    color: #1B6853 !important;
+      
+    }
+  
+    input[type="text"]::placeholder 
+    {                        
+  text-align: center;
+  }
+  input[type="number"]::placeholder
+   {     
+    text-align: center;
+    }
+
+    input {
+      font-size: 12px !important;
+      color: var(--color-success) !important;
+      height:45px;
+      background: #F7F7F7;
+      box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+      border-radius: 8px;
+    }
+
+     
+    input[type=checkbox]
+    {
+      position: absolute; // take it out of document flow
+      opacity: 0; // hide it
+     
+    
+      & + label {
+        position: relative;
+        cursor: pointer;
+        padding: 0;
+      }
+    
+      // Box.
+      & + label:before {
+        content: '';
+        margin-right: 6px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        background: white;
+        outline:1px solid #1B6853;
+      }
+      // Box checked
+  &:checked + label:before {
+    background:  #1B6853;
+  }
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+
+}
+
+    .input-field {
+      background: #F7F7F7 !important;
+      box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+      border-radius: 8px 0 0 8px;
+
+    }
+
+    .input-group-append {
+      height: 32px !important;
+      background: #1B6853;
+      box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+      border-radius: 8px;
+      .btn {
+        border-radius: 8px;
+      }
+    }
+    .input-group-append:hover {
+      background: #1B6853 !important;
+    }
+  }
+
+  .form-check {
+
+    padding-left: 1rem;
+
+    input {
+      width: 16px !important;
+      height: 16px !important;
+      
+    }
+  
+
+    label {
+      // font-size: 12px !important;
+      font-family: "poppins" !important;
+      margin-top: 3px;
+      color: #232323 !important;
+      font-size: 15px;
+      line-height: 19px;
+      color: #1B6853;
+    }
+  }
+
+  .graph-type-wrap {
+    .graph-type-label {
+      margin-right: 5px;
+      top: 30%;
+    }
+
+    .graph-type-select {
+      min-width: 200px;
+      border-radius: 5px;
+      //flex: 1 1 auto;
+      //width: 1%;
+      height: 45px;
+    }
+  }
+
+  .section-header {
+
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+
+    .section-title {
+      font-size: 14px;
+      color: #1B6853 !important;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .input-group .form-control {
+      height: 45px;
+      background: #F7F7F7;
+      box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+
+  }
+
+
+  }
+
+  .color-picker-wrap {
+    padding-bottom: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .icon-config-section {
+    .icon-label {
+      // margin: auto 6px;
+    }
+  }
+}
+.disabled {
+    opacity: .7 !important;
+}
+
+.section-card {
+  background: #F7F7F7;
+  padding: 1rem;
+}
+.text-icon {
+  height: 45px;
+}
+.size-btn {
+  height: 45px;
+  width: 45px;
+}

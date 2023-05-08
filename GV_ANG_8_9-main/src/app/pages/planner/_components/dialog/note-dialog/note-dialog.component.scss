@@ -1,0 +1,97 @@
+.note-dialog {
+  .modal-dialog {
+    .modal-content {
+      .modal-header {
+        background-color: var(--color-success);
+        height: 51px !important;
+        justify-content: center;
+
+        .modal-title {
+          font-size: 14px !important;
+          font-family: "poppins-medium" !important;
+          color: white !important;
+        }
+
+        .close {
+          margin: 0;
+          position: absolute;
+          top: 0px;
+          right: 20px;
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          // background-color: white !important;
+          color: red !important;
+          font-size: 9px;
+          opacity: 1;
+          z-index: 10;
+        }
+        .back
+        {
+          margin: 0;
+          position: absolute;
+          top: 10px;
+          left: 20px;
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;         
+          color: red !important;
+          font-size: 9px;
+          opacity: 1;
+          z-index: 10;
+          background-color: unset;
+          border: 0px;
+
+        }
+      }
+
+      .modal-body {
+        textarea {
+          font-size: 14px !important;
+          font-family: "poppins-medium" !important;
+          color: var(---color-semi-gray) !important;
+        }
+      }
+
+      .modal-footer {
+        border-top: none !important;
+
+        button {
+          width: 102px !important;
+          font-size: 12px !important;
+          font-family: "poppins" !important;
+
+          &.btn-success {
+            background-color: var(--color-success) !important;
+          }
+
+          i {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+  }
+}
+.justify-content-evenly
+{
+  justify-content:space-between !important;
+}
+
+textarea.customtextare
+{
+  // background: #D7D7D7;
+  color: #232323;
+  background: #F7F7F7;
+  box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+}
+
+button.custombtncancel {
+  width: 120px !important;
+  margin-left: 50px!important;
+}
+
+button.custombtnsave {
+  width: 120px !important;
+  margin-right: 50px !important;
+}

@@ -1,0 +1,53 @@
+.login-bg {
+  background-color: #1b6853;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-card {
+    min-width: 30%;
+  }
+}
+
+mat-card-header {
+  border-bottom: 1px solid #1b6853;
+  display: flex;
+  justify-content: center;
+  margin: 30px -16px;
+
+  mat-card-title {
+    padding: 15px;
+  }
+}
+
+mat-card-content {
+  color: #1b6853;
+  margin: 10px;
+
+  p {
+    font-size: 14px;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .email, .password {
+    mat-form-field {
+      width: 100%;
+  
+      mat-icon {
+        color: #a7a7a7;
+      }
+    }
+  }
+
+  .rememberme {
+    padding: 10px 0;
+  }
+
+  .submit > button {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+  }
+}

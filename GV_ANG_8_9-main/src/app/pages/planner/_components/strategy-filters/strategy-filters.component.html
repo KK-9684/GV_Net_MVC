@@ -1,0 +1,388 @@
+<div class="row m-0 strategy-filters mt-4" [ngClass]="{'disabled': disabled}">
+  <div class="col-12 filters-section active-filters">
+    <div class="row">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">Active Filters</span>
+      </div>
+      <div class="col-12 section-content">
+        <div class="row">
+          <ng-container *ngFor="let filter of filters; index as i">
+            <div class="col-auto mt-1 mb-1">
+              <button
+                class="
+                  btn btn-visibility
+                  bg-semi-success
+                  text-capitalize text-success
+                  d-flex
+                  justify-content-between
+                  align-items-center
+                  selected-filters
+                "
+                [disabled]="disabled"
+                (click)="onClickFilter(filter)"
+              >
+                <span>{{ filter }}</span>
+                <i class="fal fa-times-circle"></i>
+              </button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-12 filters-section">
+    <div class="row">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">Stats Filter</span>
+        <span matTooltip="Stats Filters sample text" matTooltipPosition="above">
+          <i class="fal fa-info-circle ml-3" style="cursor: pointer"></i>
+        </span>
+      </div>
+      <div class="col-12 section-content">
+        <div class="row">
+          <div class="col-auto d-flex align-items-center">
+            <select
+              class="custom-select border-0 bg-semi-success"
+              [value]="statType"
+              [disabled]="disabled"
+              (change)="onChangeStatType($event)"
+            >
+              <option selected>Stat Type</option>
+              <option *ngFor="let opt of statTypes" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-auto d-flex align-items-center">
+            <select
+              class="custom-select border-0 bg-semi-success"
+              [disabled]="disabled"
+              (change)="onChangeStatFilterType($event)"
+            >
+              <option selected>Filter Type</option>
+              <option *ngFor="let opt of filterTypes" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-auto input-group d-flex align-items-center">
+            <input
+              type="number"
+              class="form-control bg-semi-success text-success border-0"
+              placeholder="Value"
+              [value]="statFilterValue"
+              [disabled]="disabled"
+              (change)="onChangeStatFilterValue($event)"
+            />
+            <div class="input-group-append">
+              <button
+                class="
+                  btn btn-semi-success
+                  d-flex
+                  align-items-center
+                  text-white
+                "
+                type="button"
+              >
+                #
+              </button>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <button
+              class="btn btn-sm text-white btn-semi-success"
+              [disabled]="disabled"
+              (click)="onAddStatFilter()"
+            >
+              <i class="fal fa-plus-circle mr-2"></i>
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 filters-section">
+    <div class="row">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">Correct Score Filters</span>
+        <span
+          matTooltip="Correct Score Filters sample text"
+          matTooltipPosition="above"
+        >
+          <i class="fal fa-info-circle ml-3" style="cursor: pointer"></i>
+        </span>
+      </div>
+      <div class="col-12 section-content">
+        <div class="row">
+          <div class="col-auto d-flex align-items-center">
+            <select
+              class="custom-select border-0 bg-semi-success text-success"
+              [value]="homeGoals"
+              [disabled]="disabled"
+              (change)="onChangeHomeGoals($event)"
+            >
+              <option *ngFor="let goal of goalsArr; index as i" [value]="i">
+                Home Goals {{ i }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-auto d-flex align-items-center">
+            <select
+              class="custom-select border-0 bg-semi-success text-success"
+              [value]="awayGoals"
+              [disabled]="disabled"
+              (change)="onChangeAwayGoals($event)"
+            >
+              <option *ngFor="let goal of goalsArr; index as i" [value]="i">
+                Away Goals {{ i }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <button
+              class="btn btn-sm text-white btn-semi-success"
+              (click)="onAddCorrectScoreFilter()"
+              [disabled]="disabled"
+            >
+              <i class="fal fa-plus-circle mr-2"></i>
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- start implementing new filter -->
+
+  <div class="col-12 filters-section">
+    <div class="row">
+      <div class="col-12 section-header px-0">
+        <span class="section-title text-semi-gray">Filter Creation</span>
+        <span
+          matTooltip="Correct Score Filters sample text"
+          matTooltipPosition="above"
+        >
+          <i class="fal fa-info-circle ml-3" style="cursor: pointer"></i>
+        </span>
+      </div>
+      <div class="col-12 section-content px-0">
+        <mat-accordion class="headers-align" [multi]="true">
+          <mat-expansion-panel #panel1 (opened)="closeOtherPanels(panel1)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="badge">Step 1</span> &nbsp;Define left operand
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-strategy-filters-operand
+              #leftOperand
+              [type]="type_left">
+            </app-strategy-filters-operand>
+          </mat-expansion-panel>
+          <mat-expansion-panel #panel2 (opened)="closeOtherPanels(panel2)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="badge">Step 2</span> &nbsp;Select
+                comparator</mat-panel-title
+              >
+            </mat-expansion-panel-header>
+            <div class="form-group row mb-2">
+              <mat-label class="col-sm-2" style="margin: 30px 0 0 10px"
+                >Comparator</mat-label
+              >
+
+              <mat-form-field class="col-sm-8">
+                <mat-select [(ngModel)]="selectedStatFilterType">
+                  <mat-option
+                    *ngFor="let filter of filterTypes"
+                    [value]="filter"
+                  >
+                    {{ filter }}
+                  </mat-option>
+                </mat-select>
+
+                <mat-hint align="start"
+                  >Select the comparator to be used</mat-hint
+                >
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel #panel3 (opened)="closeOtherPanels(panel3)" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="badge">Step 3</span> &nbsp;Define right
+                operand</mat-panel-title
+              >
+            </mat-expansion-panel-header>
+            <app-strategy-filters-operand
+              #rightOperand
+              [type]="type_right">
+            </app-strategy-filters-operand>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="rule-preview">
+          <strong> Preview: </strong>
+          <mark>{{leftVal1_pre1()}}{{leftVal1_pre2()}}{{leftVal1_pre3()}}</mark>
+          <mark>{{leftOperator()}}</mark>
+          <mark>{{leftVal2_pre1()}}{{leftVal2_pre2()}}{{leftVal2_pre3()}}</mark>
+          <mark>&nbsp;{{selectedStatFilterType}}&nbsp;</mark>
+          <mark>{{rightVal1_pre1()}}{{rightVal1_pre2()}}{{rightVal1_pre3()}}</mark>
+          <mark>{{rightOperator()}}</mark>
+          <mark>{{rightVal2_pre1()}}{{rightVal2_pre2()}}{{rightVal2_pre3()}}</mark>
+        </div>
+        <div class="action-buttons">
+          <button
+            mat-flat-button
+            class="save"
+            color="primary"
+            (click)="onSaveRule()"
+          >
+          <i class="fas fa-save"></i> Add Rule
+          </button>
+          <!--<button
+            mat-flat-button
+            [matMenuTriggerFor]="menu1"
+            class="save-dropdown"
+            color="primary"
+          >
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #menu1="matMenu">
+            <button mat-menu-item (click)="!disabled && onSaveAnotherRule()">
+              <mat-icon>save</mat-icon>
+              <span>Save and create another</span>
+            </button>
+          </mat-menu>-->
+
+          <button
+            mat-flat-button
+            class="preset"
+            color="primary"
+            [matMenuTriggerFor]="menu2"
+          >
+            <i class="fas fa-magic"></i> Preset Filters
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #menu2="matMenu">
+            <button
+              mat-menu-item
+              *ngFor="let rule of presetRules"
+              (click)="!disabled && onClickMenuItem(rule)"
+            >
+              {{ rule.name }}
+            </button>
+          </mat-menu>
+
+          <button
+            mat-flat-button
+            class="cancel"
+            color="primary"
+            (click)="!disabled && onCancelRule()"
+          >
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end implementing  -->
+
+  <div class="col-12 filters-section league-filter">
+    <div class="row">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">League Filters</span>
+        <span
+          matTooltip="League Filters sample text"
+          matTooltipPosition="above"
+        >
+          <i class="fal fa-info-circle ml-3" style="cursor: pointer"></i>
+        </span>
+      </div>
+      <div class="col-12 section-content">
+        <div class="league-filter-container">
+          <mat-tab-group (selectedTabChange)="!disabled && handleTabChange($event)">
+            <mat-tab [label]="leaguesTabTitle"></mat-tab>
+            <mat-tab [label]="selectedTabTitle"></mat-tab>
+          </mat-tab-group>
+          <input
+            type="text"
+            placeholder="Search Leagues... (e.g. U23, Women, Belarus, Cup)"
+            class="search-bar"
+            [(ngModel)]="leagueFilterQuery"
+            [disabled]="disabled"
+            (keyup)="handleSearchLeague()"
+          />
+          <div class="league-button-wrap">
+            <button
+              mat-stroked-button
+              class="league-button ml-0"
+              (click)="handleSelectAll()"
+              [disabled]="disabled"
+            >
+              <mat-icon>done</mat-icon>
+              Select all
+            </button>
+            <button
+              mat-stroked-button
+              class="league-button"
+              (click)="handleUnselectAll()"
+              [disabled]="disabled"
+            >
+              <mat-icon>close</mat-icon>
+              Unselect all
+            </button>
+            <button
+              mat-stroked-button
+              class="league-button clear-search"
+              (click)="handleClearFilter()"
+              [disabled]="disabled"
+            >
+              <mat-icon>search_off</mat-icon>
+              Clear search
+            </button>
+          </div>
+          <jqxGrid
+            #mygrid
+            [source]="dataAdapter"
+            [width]="'100%'"
+            [columns]="columns"
+            [showheader]="false"
+            [selectionmode]="'checkbox'"
+            [theme]="'none'"
+            [showfiltercolumnbackground]="false"
+            [showfilterrow]="true"
+            [filterable]="true"
+            [enablehover]="false"
+            [theme]="'material-purple'"
+            (onRowselect)="handleRowSelect($event)"
+            (onRowunselect)="handleRowunselect($event)"
+          >
+          </jqxGrid>
+          <div class="pick-matches">
+            <mat-radio-group
+              [(ngModel)]="leagueFilterTypeId"
+              [disabled]="disabled"
+              (change)="handleTypeIdChange($event)"
+            >
+              <mat-radio-button value="1" class="league-button">
+                Pick matches of selected leagues only
+              </mat-radio-button>
+              <mat-radio-button value="2" class="league-button">
+                Pick matches of all leagues except selected
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

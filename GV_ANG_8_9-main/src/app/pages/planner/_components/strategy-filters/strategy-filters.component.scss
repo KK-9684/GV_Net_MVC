@@ -1,0 +1,208 @@
+.strategy-filters {
+  .filters-section {
+
+    .section-header {
+      padding-top: 24px !important;
+
+      .section-title {
+        font-size: 18px;
+        line-height: 25px;
+        color: #232323 !important;
+      }
+    }
+
+    .selected-filters {
+      background: #5CAA37 !important;
+      border-radius: 8px;
+      color: #FFFFFF !important;
+    }
+
+    .section-content {
+      padding-top: 16px !important;
+      padding-bottom: 16px !important;
+
+      button {
+        &.active {
+          background-color: var(--color-success) !important;
+          color: white !important;
+        }
+      }
+
+      select {
+        width: 214px !important;
+        font-size: 12px !important;
+      }
+
+      .input-group {
+        width: 214px !important;
+
+        input {
+          font-size: 12px !important;
+        }
+
+        .input-group-append {
+          height: 32px !important;
+        }
+      }
+
+      .league-filter-container {
+        border: 1px solid lightgray;
+        padding: 10px;
+
+        .league-button-wrap {
+          margin-bottom: 10px;
+          .league-button {
+            margin: 6px;
+          }
+        }
+
+        .pick-matches {
+          margin-top: 20px;
+          text-align: center;
+        }
+
+        .search-bar {
+          width: 100%;
+          padding: 5px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .league-save-button {
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
+  // new filter like start
+  .rule-preview {
+    padding: 20px 0;
+    font-size: 18px !important;
+  }
+
+  .action-buttons {
+    .save {
+      background: #1B6853;
+      box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+      border-radius: 8px;
+      /*border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-right: 0;*/
+    }
+    .save-dropdown {
+      background: #1B6853;
+      box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .preset {
+      background: #1B409E;
+      box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+      border-radius: 8px;
+      margin: 0 4px;
+    }
+    .cancel {
+      background: #FF6969;
+      border-radius: 8px;
+    }
+  }
+
+  .mat-expansion-panel {
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+    border-radius: 8px;
+    margin-bottom: 2px;
+  }
+
+  .headers-align .mat-expansion-panel-header-title,
+  .headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .mat-radio-group {
+    margin-left: 20px;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .mat-form-field {
+    margin: 10px 0;
+  }
+  .mat-label {
+    padding: 0 10px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    font-size: 85%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    color: #fff;
+    background: #1B6853;
+    margin-right: 1em;
+  }
+  .mat-icon:hover {
+    cursor: pointer;
+  }
+  .col-sm-4 {
+    display: grid;
+  }
+  .inputnum {
+    margin-left: 20px;
+  }
+  .timerange {
+    margin: auto;
+  }
+  .active-filters {
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+    border-radius: 8px;
+  }
+  // new filter  end
+}
+
+:host::ng-deep .jqx-widget {
+  .jqx-grid-cell {
+    border: transparent !important;
+    background: none !important;
+    &:hover {
+      border: transparent !important;
+      background: none !important;
+    }
+  }
+}
+mark {
+  padding: 0px;
+}
+.disabled {
+  opacity: .7 !important;
+}
+.league-filter {
+  background: #F7F7F7;
+  box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+  border-radius: 8px;
+}
+.jqx-reset
+{
+  background: #1B6853;
+}
+
+.strategy-tab .mat-tab-label{
+  margin: 5px;
+}

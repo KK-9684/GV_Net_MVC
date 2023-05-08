@@ -1,0 +1,25 @@
+@import './../../styles/mixins';
+.planner-container {
+  // padding-top: 24px !important;
+  // padding-bottom: 24px !important;
+  max-width: 1300px;
+  
+  .planner-header {
+    span {
+      &.planner-title {
+        font-size: 18px !important;
+        font-family: "poppins-bold" !important;
+      }
+    }
+  }
+
+  .planner-content {
+    margin-top: 24px !important;
+  }
+  @include sm
+  {
+    width:100%;
+    overflow-x:auto;
+    
+  }
+}

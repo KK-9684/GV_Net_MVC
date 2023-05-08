@@ -1,0 +1,166 @@
+<div class="justify-content-start highlight-container mt-4" [ngClass]="{'disabled': disabled}">
+  <div class="col-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Stats Difference </span>
+      <mat-icon svgIcon="info" class="info-icon"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap col-4">
+        <p class="mr-3">High:</p>
+        <app-stats-number-spinner
+        [disabled]="disabled"
+          [name]="'statsDifferenceHigh'"
+          [(value)]="highlightConfig.statsDifferenceHighValue"
+          [(color)]="highlightConfig.statsDifferenceHighColour"
+          [updateStrategy]="handleChange.bind(this)"
+        ></app-stats-number-spinner>
+      </div>
+      <div class="spinnerWrap col-4">
+        <p class="mr-3">Medium:</p>
+        <app-stats-number-spinner
+        [disabled]="disabled"
+          [name]="'statsDifferenceMedium'"
+          [(value)]="highlightConfig.statsDifferenceMediumValue"
+          [(color)]="highlightConfig.statsDifferenceMediumColour"
+          [updateStrategy]="handleChange.bind(this)"
+        ></app-stats-number-spinner>
+      </div>
+      <div class="spinnerWrap col-4">
+        <p class="mr-3">Low:</p>
+        <app-stats-number-spinner
+        [disabled]="disabled"
+          [name]="'statsDifferenceLow'"
+          [(value)]="highlightConfig.statsDifferenceLowValue"
+          [(color)]="highlightConfig.statsDifferenceLowColour"
+          [updateStrategy]="handleChange.bind(this)"
+        ></app-stats-number-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Attack ratio percentage </span>
+      <mat-icon svgIcon="info" class="info-icon"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap col-4">
+        <p class="mr-3">High:</p>
+        <app-stats-number-spinner
+        [disabled]="disabled"
+          [name]="'attackConversionHigh'"
+          [(value)]="highlightConfig.attackConversionHighValue"
+          [(color)]="highlightConfig.attackConversionHighColour"
+          [updateStrategy]="handleChange.bind(this)"
+        ></app-stats-number-spinner>
+      </div>
+      <div class="spinnerWrap col-4">
+        <p class="mr-3">Low:</p>
+        <app-stats-number-spinner
+        [disabled]="disabled"
+          [name]="'attackConversionLow'"
+          [(value)]="highlightConfig.attackConversionLowValue"
+          [(color)]="highlightConfig.attackConversionLowColour"
+          [updateStrategy]="handleChange.bind(this)"
+        ></app-stats-number-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Row Click </span>
+      <mat-icon svgIcon="info" class="info-icon"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <app-color-picker
+          [label]="'Primary'"
+          [disabled]="disabled"
+          [color]="gridDisplayConfig.RowClickPrimary"
+          (colorChange)="updateRowHighlightColour($event, 'RowClickPrimary')"
+        >
+        </app-color-picker>
+      </div>
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <app-color-picker
+        [disabled]="disabled"
+          [label]="'Secondary'"
+          [color]="gridDisplayConfig.RowClickSecondary"
+          (colorChange)="updateRowHighlightColour($event, 'RowClickSecondary')"
+        >
+        </app-color-picker>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Row Hover </span>
+      <mat-icon svgIcon="info" class="info-icon"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <app-color-picker
+        [disabled]="disabled"
+          [label]="'Colour'"
+          [color]="gridDisplayConfig.RowHoverColour"
+          (colorChange)="updateRowHighlightColour($event, 'RowHoverColour')"
+        >
+        </app-color-picker>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Shape </span>
+      <mat-icon svgIcon="info" class="info-icon"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <select
+          class="mb-5 highlight-shape-select border-0"
+          style="width: inherit;"
+          [value]="highlightConfig.shape"
+          [disabled]="disabled"
+          (change)="handleChangeShape($event.target.value)"
+        >
+          <option value="rect">Rectangle</option>
+          <option value="circle">Circle</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 section-card">
+    <div class="margin-top-bottom">
+      <span class="highlight-title"> Image Export </span>
+    </div>
+    <div class="d-flex justify-content-start margin-top-bottom row">
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <app-color-picker
+          [label]="'Home'"
+          [disabled]="disabled"
+          [color]="imageExportConfig.Home"
+          (colorChange)="updateHomeImageExportColour($event, 'Home')"
+          [position]="'top-right'"
+        >
+        </app-color-picker>
+        <!-- 
+          [color]="imageExportConfig.Home"
+          (colorChange)="updateHomeImageExportColour($event, 'Home')" 
+        -->
+      </div>
+      <div class="spinnerWrap color-picker-wrap col-4">
+        <app-color-picker
+          [disabled]="disabled"
+          [label]="'Away'"
+          [color]="imageExportConfig.Away"
+          (colorChange)="updateHomeImageExportColour($event, 'Away')"
+          [position]="'top-right'"
+        >
+        </app-color-picker>
+        <!-- 
+          [color]="imageExportConfig.Away"
+          (colorChange)="updateHomeImageExportColour($event, 'Away')" 
+        -->
+      </div>
+    </div>
+  </div>
+</div>

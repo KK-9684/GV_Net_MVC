@@ -1,0 +1,181 @@
+<div class="row m-0" [ngClass]="{'disabled': disabled}">
+  <div class="col-12 strategy-appearance">
+    
+    <div class="row wrapper bg-white">
+      
+        <div class="col-lg-3 input-group pr-0 pl-5">
+          <span class="input-label my-auto">Name:</span>
+          <input
+            type="text"
+            class="form-control bg-semi-success text-success border-0 input-field"
+            placeholder="Name"
+            [(value)]="strategyName"
+            (change)="onChangeName($event)"
+            [disabled]="disabled"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-semi-success d-flex align-items-center text-icon"
+              type="button"
+              [disabled]="disabled"
+            >
+              <i
+                class="far fa-text-size"
+                style="color: white; font-size: 12px"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-3 input-group">
+          <app-color-picker
+            [label]="'Colour'"
+            
+            [color]="strategyColor"
+            (colorChange)="updateStrategyColor($event)"
+            [disabled]="disabled"
+          >
+          </app-color-picker>
+        </div>
+        <div class="col-lg-3 form-check d-flex align-items-center input-group">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="show-on-scanner"
+            [(checked)]="showOnScanner"
+            (change)="onChangeShowOnScannerStatus($event)"
+            [disabled]="disabled"
+          />
+          <label
+            class="form-check-label ml-1 text-semi-gray"
+            for="show-on-scanner"
+            >Show on scanner</label
+          >
+        </div>
+    
+
+    </div>
+    <!-- row -->
+   
+    <div class="row section-card mb-2 mt-3">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">Momentum</span>
+      </div>
+      <div class="col-12 input-group graph-type-wrap">
+        <div class="col-4 pl-0">
+          <span class="input-label graph-type-label col-4 px-0 my-auto">Graph Type:</span>
+          <select
+            class=" text-success graph-type-select border-0 col-8 float-right"
+            [value]="momentumGraphConfig['GraphType']"
+            (change)="updateMomentumGraphType($event.target.value)"
+            [disabled]="disabled"
+          >
+            <option value="Bar">Bar</option>
+            <option value="Line">Line</option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="col-lg-4 color-picker-wrap"
+        *ngFor="let color of momentumColors"
+      >
+        <app-color-picker
+          [label]="color.value"
+          [color]="momentumGraphConfig[color.key]"
+          (colorChange)="updateMomentumColor($event, color.key)"
+          [disabled]="disabled"
+        >
+        </app-color-picker>
+      </div>
+    </div>
+    <div class="row section-card">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">P1 Graph</span>
+      </div>
+      <div
+        class="col-lg-4 color-picker-wrap"
+        *ngFor="let color of P1P2GraphColors"
+      >
+        <app-color-picker
+          [label]="color"
+          [color]="p1GraphConfig[color]"
+          (colorChange)="updateP1GraphColor($event, color)"
+          [disabled]="disabled"
+        >
+        </app-color-picker>
+      </div>
+    </div>
+    <div class="row section-card mb-2">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">P2 Graph</span>
+      </div>
+      <div
+        class="col-lg-4 color-picker-wrap"
+        *ngFor="let color of P1P2GraphColors"
+      >
+        <app-color-picker
+          [label]="color"
+          [color]="p2GraphConfig[color]"
+          (colorChange)="updateP2GraphColor($event, color)"
+          [disabled]="disabled"
+        >
+        </app-color-picker>
+      </div>
+    </div>
+    <div class="row icon-config-section justify-content-start section-card">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">Icon Visibility</span>
+      </div>
+      <div
+        class="col-lg-2 form-check d-flex align-items-center input-group"
+        *ngFor="let icon of iconNames"
+      >
+        <input
+          type="checkbox"
+          class="icon-check"
+          [id]="icon"
+          [(checked)]="iconsConfig[icon.replace(' ', '')]"
+          (change)="updateIconsConfig($event, icon)"
+          [disabled]="disabled"
+        />
+        <label
+          class="icon-label input-label icon-config-label"
+          [for]="icon"
+        >
+          {{icon}}
+        </label>
+      </div>
+    </div>
+    <div class="row grid-config-section justify-content-start section-card">
+      <div class="col-12 section-header">
+        <span class="section-title text-semi-gray">
+          Size
+        </span>
+      </div>
+      <div
+        class="col-lg-4 input-group"
+        *ngFor="let grid of gridConfigNames"
+      >
+        <span class="input-label m-auto">{{grid.value}}: </span>
+        <input
+          type="number"
+          class="form-control border-0"
+          [(value)]="gridDisplayConfig[grid.key]"
+          (change)="updateGridDisplayConfig($event, grid.key)"
+          [disabled]="disabled"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-semi-success d-flex align-items-center size-btn"
+            type="button"
+            [disabled]="disabled"
+          >
+            <i
+              class="fas fa-sort-numeric-up-alt"
+              style="color: white; font-size: 12px"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

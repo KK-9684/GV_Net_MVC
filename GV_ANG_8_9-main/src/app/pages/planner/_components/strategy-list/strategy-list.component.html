@@ -1,0 +1,59 @@
+<div class="m-0 bg-white strategy-tab">
+  <div class="row strategy-header">
+    <div class="col-12 col-sm-4 m-auto">
+      <button
+        mat-flat-button
+        color="primary"
+        class="function-item btn btn-success import-btn"
+        (click)="openStrategyDialog()"
+      >
+        <mat-icon svgIcon="document-upload" class="upload-icon"></mat-icon>
+        Import Sample Strategies
+      </button>
+    </div>
+    <div class="col-12 col-sm-4 d-flex align-items-center tab-title">
+      <span class="tab-text">ACTIVE STRATEGIES</span>
+    </div>
+    <div class="col-12 col-sm-4 mt-2 mb-2 d-flex align-items-center function-item-wrap">
+      <button
+        mat-flat-button
+        color="primary"
+        class="function-item save-btn btn btn-success d-block mr-0 ml-auto"
+        (click)="onSaveStrategy()"
+        [disabled]="!isTargetStrategyChanged()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+  <div class="seperator"></div>
+  <div class="row tab-content d-flex align-items-center strategy-container">
+    <div class="col-12">
+      <div class="row p-3">
+        <div class="col-12"></div>
+        <ng-container *ngFor="let strategy of strategies;index as i;">
+          <div class="col-auto mt-2 mb-2" [hidden]="deletingStrategy.includes(strategy.strategyId)">
+            <button class="btn btn-visibility d-flex align-items-center justify-content-between selected-strategy"
+              [ngClass]="isActiveStrategy(strategy) ? 'bg-success text-white' : 'bg-semi-success text-success'"
+              (click)="onChangeTargetStrategy(strategy)">
+              <span>{{strategy?.name}}</span>
+              <span style="padding-right:4px"></span>
+              <span *ngIf="!isActiveStrategy(strategy) || strategies.length == 1" (click)="onDeleteStrategy(strategy)">
+                <i class="fal fa-times-circle"></i>
+              </span>
+              <span *ngIf="isActiveStrategy(strategy) && strategies.length > 1">
+                <i class="fal fa-check-circle"></i>
+              </span>
+            </button>
+          </div>
+        </ng-container>
+        <div class="col-auto mt-2 mb-2 d-flex align-items-center">
+          <button class="btn btn-planner btn-sm" (click)="onCreateStrategy()">
+            <mat-icon class="add-icon">add</mat-icon>
+            Create new strategy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

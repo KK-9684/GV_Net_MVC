@@ -1,0 +1,70 @@
+@import './../../../../styles/mixins';
+.strategy-tab {
+
+  .strategy-header {
+    background: #1B6853;
+  }
+
+  .import-btn {
+    background: #1B879E !important;
+    border-radius: 5px;
+    color: #E5E5E5;
+    max-width: 298px;
+    font-size: 12px;
+    @include md
+    {
+      font-size: 12px;
+    
+    }
+  }
+
+  .upload-icon {
+    height: 18px;
+    width: 18px;
+    margin-bottom: 20px;
+    margin-right: .2rem;
+  }
+
+  .tab-title {
+    color: #FFFFFF;
+    .tab-text {
+      margin: auto;
+      font-size: 16px;
+    }
+  }
+
+  .save-btn {
+    background: #5CAA37;
+    border-radius: 5px;
+    color: #FFFFFF;
+  }
+}
+
+.strategy-container {
+  background: #F7F7F7;
+  box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+}
+
+.btn-planner {
+  background: #5CAA37 !important;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  padding: 4px 20px;
+  font-family: 'Quicksand-SemiBold';
+  width: 214px;
+  height: auto;
+}
+
+.add-icon {
+  font-size: 20px;
+}
+
+.selected-strategy{
+  background: #1B6853;
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.selected-strategy:hover {
+  background: #1B6853 !important;
+}

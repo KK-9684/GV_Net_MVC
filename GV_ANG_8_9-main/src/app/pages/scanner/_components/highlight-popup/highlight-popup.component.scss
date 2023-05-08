@@ -1,0 +1,13 @@
+.note-container {
+    padding: 4px;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #146853;
+    border: 1px solid #146853;
+    font-size: 13px;
+    font-weight: 600;
+
+    .highlight-text {
+      white-space: pre-line;
+    }
+}

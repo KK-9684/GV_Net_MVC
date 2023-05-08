@@ -1,0 +1,344 @@
+<div class="form-group row mb-2" style="margin: 20px 0">
+  <mat-label class="col-sm-2">Value Type</mat-label>
+  <mat-radio-group
+    class="col-sm-8"
+    aria-label="Select a operand"
+    [(ngModel)]="valueType"
+    (change)="handleValueTypeChange($event.value, 'Val1')"
+  >
+    <mat-radio-button value="1" [disabled]="type=='left'">Constant</mat-radio-button>
+    <mat-radio-button value="2"
+      >Match Stats / Metric</mat-radio-button
+    >
+    <!-- <mat-radio-button value="3">Odd</mat-radio-button> -->
+  </mat-radio-group>
+</div>
+<div
+  class="form-group row mb-2"
+  style="margin: 20px 0"
+  *ngIf="valueType == '1'"
+>
+  <mat-label class="col-sm-2"><br />Value</mat-label>
+  <mat-form-field class="col-sm-8 inputnum">
+    <input
+      matInput
+      placeholder="Enter number"
+      type="number"
+      (keyup)="handleConstantChange($event.target.value, 'Val1')"
+      [(ngModel)]="Val1.constant"
+    />
+    <mat-hint align="start"
+      >Enter the numeric value (e.g. number of goals, decimal odd,
+      coefficient)</mat-hint
+    >
+  </mat-form-field>
+</div>
+<div style="display: flex" *ngIf="valueType == '2'">
+  <div class="col-sm-4">
+    <mat-label>Match metric</mat-label>
+    <mat-form-field>
+      <mat-select
+        (selectionChange)="handleMetricSelect($event, 'Val1')"
+        [(ngModel)]="Val1.reference"
+      >
+        <mat-option
+          *ngFor="let metric of metrics"
+          [value]="metric.value"
+        >
+          {{ metric.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-hint align="start">Select the value to be used</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-4" *ngIf="metricSelected">
+    <mat-label
+      >Team<mat-icon (click)="openTeamDialog()"
+        >info</mat-icon
+      ></mat-label
+    >
+    <mat-form-field>
+      <mat-select
+        (selectionChange)="handleTeamSelect($event, 'Val1')"
+        [(ngModel)]="Val1.team"
+      >
+        <mat-option *ngFor="let team of teams" [value]="team.value">
+          {{ team.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-hint align="start"
+        >Select the team of which the value will be
+        counted</mat-hint
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-sm-4" *ngIf="teamSelected">
+    <mat-label
+      >Temporal range<mat-icon (click)="openRangeDialog()"
+        >info</mat-icon
+      ></mat-label
+    >
+    <div class="row">
+      <mat-form-field class="col-sm-6">
+        <mat-select #val1range
+          (selectionChange)="handleRangeChange($event, 'Val1')"
+        >
+          <mat-option
+            *ngFor="let range of ranges"
+            [value]="range.value"
+          >
+            {{ range.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start">Select the range</mat-hint>
+      </mat-form-field>
+      <div class="col-sm-6 timerange">
+        <input
+          *ngIf="rangeFrom"
+          type="number"
+          class="col-sm-6"
+          (keyup)="handleFrom($event, 'Val1', val1range)"
+          [(ngModel)]="val1from"
+        />
+        <input
+          *ngIf="rangeTo"
+          type="number"
+          class="col-sm-6"
+          (keyup)="handleTo($event, 'Val1', val1range)"
+          [(ngModel)]="val1to"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div style="display: flex" *ngIf="valueType == '3'">
+  <div class="col-sm-4">
+    <mat-label>Odd</mat-label>
+    <mat-form-field>
+      <mat-select
+        (selectionChange)="handleOddChange($event)"
+        [(ngModel)]="Val1.reference"
+      >
+        <mat-option *ngFor="let odd of odds" [value]="odd.value">
+          {{ odd.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-hint align="start">Select the value to be used</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="col-sm-4" *ngIf="oddSelected">
+    <mat-label
+      >Team<mat-icon (click)="openTeamDialog()"
+        >info</mat-icon
+      ></mat-label
+    >
+    <mat-form-field>
+      <mat-select (selectionChange)="handleTeamSelect($event, 'Val1')"
+      [(ngModel)]="Val1.team">
+        <mat-option *ngFor="let team of teams" [value]="team.value">
+          {{ team.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-hint align="start"
+        >Select the team of which the value will be
+        counted</mat-hint
+      >
+    </mat-form-field>
+  </div>
+</div>
+<div *ngIf="valueType != '1'">
+  <hr />
+  <div class="form-group row mb-2">
+    <mat-label class="col-sm-2" style="margin-left: 10px"
+      >Extend operand</mat-label
+    >
+    <div class="col-sm-8">
+      <mat-radio-group
+        aria-label="Select an option"
+        [(ngModel)]="extend"
+        (change)="handleExtend($event)"
+      >
+        <mat-radio-button value="1">No</mat-radio-button>
+        <mat-radio-button value="+">+</mat-radio-button>
+        <mat-radio-button value="-">-</mat-radio-button>
+        <mat-radio-button value="*">x</mat-radio-button>
+        <mat-radio-button value="/">÷</mat-radio-button>
+        <mat-radio-button value="^">^</mat-radio-button>
+        <!-- <mat-radio-button value="rt">√</mat-radio-button> -->
+        <mat-radio-button value="%">mod</mat-radio-button>
+      </mat-radio-group>
+      <br />
+      <mat-hint
+        class="col-sm-8"
+        align="start"
+        style="margin-left: 5px"
+      >
+        Add a 2nd value to the operand, applying the selected
+        operator (e.g. Shots on Target + Shots Off Target)</mat-hint
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="extend != '1' && valueType != '1'">
+  <hr />
+  <div class="form-group row mb-2" style="margin: 20px 0">
+    <mat-label class="col-sm-2">Value Type</mat-label>
+    <mat-radio-group
+      class="col-sm-8"
+      aria-label="Select a operand"
+      [(ngModel)]="secondValueType"
+      (change)="handleValueTypeChange($event.value, 'Val2')"
+    >
+      <mat-radio-button value="1">Constant</mat-radio-button>
+      <mat-radio-button value="2"
+        >Match Stats / Metric</mat-radio-button
+      >
+      <!-- <mat-radio-button value="3">Odd</mat-radio-button> -->
+    </mat-radio-group>
+  </div>
+  <div
+    class="form-group row mb-2"
+    style="margin: 20px 0"
+    *ngIf="secondValueType == '1'"
+  >
+    <mat-label class="col-sm-2"><br />Value</mat-label>
+    <mat-form-field class="col-sm-8 inputnum">
+      <input
+        matInput
+        placeholder="Enter number"
+        type="number"
+        (keyup)="handleConstantChange($event.target.value, 'Val2')"
+        [(ngModel)]="Val2.constant"
+      />
+      <mat-hint align="start"
+        >Enter the numeric value (e.g. number of goals, decimal odd,
+        coefficient)</mat-hint
+      >
+    </mat-form-field>
+  </div>
+  <div style="display: flex" *ngIf="secondValueType == '2'">
+    <div class="col-sm-4">
+      <mat-label>Match metric</mat-label>
+      <mat-form-field>
+        <mat-select
+          (selectionChange)="handleMetricSelect($event, 'Val2')"
+          [(ngModel)]="Val2.reference"
+        >
+          <mat-option
+            *ngFor="let metric of metrics"
+            [value]="metric.value"
+          >
+            {{ metric.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start"
+          >Select the value to be used</mat-hint
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="col-sm-4" *ngIf="metricSecondSelected">
+      <mat-label
+        >Team<mat-icon (click)="openTeamDialog()"
+          >info</mat-icon
+        ></mat-label
+      >
+      <mat-form-field>
+        <mat-select
+          (selectionChange)="handleTeamSelect($event, 'Val2')"
+          [(ngModel)]="Val2.team"
+        >
+          <mat-option
+            *ngFor="let team of teams"
+            [value]="team.value"
+          >
+            {{ team.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start"
+          >Select the team of which the value will be
+          counted</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4" *ngIf="teamSecondSelected">
+      <mat-label
+        >Temporal range<mat-icon (click)="openRangeDialog()"
+          >info</mat-icon
+        ></mat-label
+      >
+      <div class="row">
+        <mat-form-field class="col-sm-6">
+          <mat-select #val2range
+            (selectionChange)="handleRangeChange($event, 'Val2')"
+          >
+            <mat-option
+              *ngFor="let range of ranges"
+              [value]="range.value"
+            >
+              {{ range.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-hint align="start">Select the range</mat-hint>
+        </mat-form-field>
+        <div class="col-sm-6 timerange">
+          <input
+            *ngIf="rangeSecondFrom"
+            type="number"
+            class="col-sm-6"
+            (keyup)="handleFrom($event, 'Val2', val2range)"
+            [(ngModel)]="val2from"
+          />
+          <input
+            *ngIf="rangeSecondTo"
+            type="number"
+            class="col-sm-6"
+            (keyup)="handleTo($event, 'Val2', val2range)"
+            [(ngModel)]="val2to"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex" *ngIf="secondValueType == '3'">
+    <div class="col-sm-4">
+      <mat-label>Odd</mat-label>
+      <mat-form-field>
+        <mat-select
+          (selectionChange)="handleSecondOddChange($event)"
+          [(ngModel)]="Val2.reference"
+        >
+          <mat-option *ngFor="let odd of odds" [value]="odd.value">
+            {{ odd.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start"
+          >Select the value to be used</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4" *ngIf="oddSecondSelected">
+      <mat-label
+        >Team<mat-icon (click)="openTeamDialog()"
+          >info</mat-icon
+        ></mat-label
+      >
+      <mat-form-field>
+        <mat-select (selectionChange)="handleTeamSelect($event, 'Val2')"
+        [(ngModel)]="Val2.team">
+          <mat-option
+            *ngFor="let team of teams"
+            [value]="team.value"
+          >
+            {{ team.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start"
+          >Select the team of which the value will be
+          counted</mat-hint
+        >
+      </mat-form-field>
+    </div>
+  </div>
+</div>

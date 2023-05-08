@@ -1,0 +1,33 @@
+.grid {
+  display: flex;
+}
+.progress__row {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #52B030;
+  margin-top: 15px;
+}
+
+.progress__row .progress {
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #006DCC;
+}
+
+.progress-bar {
+
+  display: block;
+  width: 100%;
+
+  background-color: #52B030;
+}
+.col-2-6 {
+  width: 33.33333333333334%;
+}
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: end;
+}

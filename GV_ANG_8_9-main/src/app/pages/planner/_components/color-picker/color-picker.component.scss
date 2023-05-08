@@ -1,0 +1,53 @@
+.input-group {
+  .input-label {
+    min-width: 50px;
+    vertical-align: middle;
+    line-height: 2;
+    margin-right: 5px;
+    color: #232323;
+    flex: 0 0 35%;
+    max-width: 35%;
+    font-size: 15px;
+    line-height: 19px;
+
+  }
+
+  input {
+    font-size: 12px !important;
+    color: var(--color-success) !important;
+  }
+
+  .input-field {
+
+    background: #F7F7F7 !important;
+    box-shadow: 0px 0px 4px rgb(35 35 35 / 10%);
+    border-radius: 8px 0 0 8px;
+    height: 45px;
+
+  }
+
+  .input-group-append {
+    background: #1B6853;
+    box-shadow: 0px 0px 4px rgba(35, 35, 35, 0.1);
+    border-radius: 8px;
+
+    button
+    {
+      height: 45px;
+      width: 45px;
+    }
+    .btn {
+      border-radius: 8px;
+      padding: 0.75rem 0.5rem;
+    }
+  }
+  .input-group-append:hover {
+    background: #1B6853 !important;
+  }
+  .color-picker-icon {
+    height: 18px;
+    svg {
+      margin-bottom: 8px;
+    }
+  }
+}
